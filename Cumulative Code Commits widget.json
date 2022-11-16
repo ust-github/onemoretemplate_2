@@ -1,0 +1,735 @@
+{
+  "chartOptions": {
+    "dataZoom": false,
+    "description": " ",
+    "gridPagination": false,
+    "hasResetFilter": false,
+    "hideLegend": false,
+    "hideTitle": false,
+    "higherIsBetter": false,
+    "layout": "1-1",
+    "scrollToBottom": false,
+    "serverSidePagination": false,
+    "showArea": false,
+    "showCount": false,
+    "showStacked": false,
+    "showTotal": false,
+    "title": "Cumulative Code Commits"
+  },
+  "complexNamedDropdown": false,
+  "filters": [
+    {
+      "defaultValueLines": [
+        "return 7"
+      ],
+      "dynamic": false,
+      "hideLabel": false,
+      "label": "Days",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "date",
+      "position": "LEFT",
+      "type": "INPUT",
+      "width": "60"
+    },
+    {
+      "defaultValueLines": [
+        "return true"
+      ],
+      "description": "Pie Chart",
+      "dynamic": false,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "label": "Show Active",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "showActive",
+      "position": "LEFT",
+      "type": "CHECKBOX"
+    },
+    {
+      "dynamic": false,
+      "hideLabel": false,
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "teamsHidden",
+      "position": "LEFT",
+      "query": {
+        "queryLines": [
+          "return placeholders.project_id?.size() ? 'SELECT t.pk AS team_pk, t.name AS team_name, au.email as user_email, t.is_default '+",
+          "'FROM edgeops.app_team_relation atr JOIN edgeops.dp_team t ON atr.team_id = t.pk '+",
+          "'LEFT JOIN edgeops.dp_user_team_relation utr ON t.pk = utr.team_id '+",
+          "'LEFT JOIN edgeops.app_user au ON utr.user_id = au.pk '+",
+          "'WHERE atr.app_id IN (:project_id) '+",
+          "'ORDER BY t.name ' : '';"
+        ],
+        "scriptLines": [
+          "if (!placeholders._options.teamsHidden)",
+          "\tplaceholders._options.teamsHidden = []",
+          "",
+          "placeholders.teams = placeholders._options.teamsHidden;",
+          "",
+          "if (placeholders.teams) {",
+          "  \tplaceholders.test = []",
+          "\tdef teamMembers = [:];",
+          "\tdef defaultTeam;",
+          "\tdef allTeams = [] as Set;",
+          "\tdef membersMap = new HashMap()",
+          "  \tplaceholders.teams.each { item ->   ",
+          "  \t\tallTeams<<item.team_name",
+          "      \tif (item.user_email){",
+          "        \tteamMembers[item.user_email] = item.team_name;",
+          "        }",
+          "      ",
+          "      \tif (item.is_default){",
+          "        \tdefaultTeam = item.team_name;",
+          "        }",
+          "  ",
+          "      \tif (item.user_email) {",
+          "      \t\tif (!membersMap[item.user_email]) {",
+          "    \t\t\tmembersMap[item.user_email] = []",
+          "      \t\t}",
+          "\t\t\tmembersMap[item.user_email]<<item.team_name",
+          "      \t}",
+          "\t}",
+          "",
+          "  \tplaceholders.membersMap = membersMap",
+          "\tplaceholders.teamMembers = teamMembers;",
+          "\tplaceholders.defaultTeam = defaultTeam;",
+          "\tplaceholders.allTeams = allTeams;",
+          "} "
+        ],
+        "type": "POSTGRESQL"
+      },
+      "type": "HIDDEN"
+    }
+  ],
+  "groupIndex": 0,
+  "help": {
+    "descriptionLines": [
+      "<p>Use this widget to identify the amount of work completed by each team and examine the teams' engagement in the project.</p>"
+    ],
+    "howScoreCalculatedLines": [
+      ""
+    ],
+    "howScoreCanImprovedLines": [
+      ""
+    ],
+    "insights": [
+      {
+        "insight": "<p>Gain insights into each team's productivity based on their number of commits.&nbsp;</p>\n",
+        "recommendations": [
+          "<p>Create small and frequent commits that make it easier to investigate when something goes wrong.</p>\n"
+        ]
+      }
+    ],
+    "summaryLines": [
+      "<p>This widget shows the total number of commits added together from each team.</p>",
+      "",
+      "<p>On hover, each team's number of commits and percentage total are displayed.</p>",
+      "",
+      "<p><strong>Note: </strong>The Default Team are members that don’t appear to be on any specific team.</p>",
+      "",
+      "<p>Please see&nbsp;<a href=\"https://www.dagility.com/documentation/3/illuminate/generic-widget-usage\" rel=\"nofollow\">Generic Widget Usage</a>&nbsp;for instructions on how to view/set filters, thresholds, comments, etc., on all widgets.</p>",
+      "",
+      "<p><u>Filter</u></p>",
+      "",
+      "<p><strong>Days:</strong>&nbsp;Default is set to 7 days. Specify the number of previous days to filter on starting from today.&nbsp;</p>"
+    ]
+  },
+  "id": "ec7d9f6d-52d7-4329-a58d-8b1a86d13396",
+  "inputPlaceholders": [
+    "local_start_day",
+    "timezone",
+    "project_id",
+    "unitId"
+  ],
+  "server": true,
+  "size": {
+    "defaultH": 0.25,
+    "defaultW": 0.25,
+    "minH": 0.25,
+    "minW": 0.25
+  },
+  "system": true,
+  "type": "complex",
+  "widgets": [
+    {
+      "chartOptions": {
+        "dataZoom": false,
+        "description": " ",
+        "enterableTooltip": false,
+        "gridPagination": false,
+        "hasResetFilter": false,
+        "hideLegend": false,
+        "hideTitle": false,
+        "higherIsBetter": false,
+        "scrollToBottom": false,
+        "serverSidePagination": false,
+        "showArea": false,
+        "showCount": false,
+        "showStacked": false,
+        "showTotal": true,
+        "title": " "
+      },
+      "complexNamedDropdown": false,
+      "drilldownList": [
+        {
+          "default": false,
+          "displayType": "modal",
+          "drilldownScriptLines": [
+            "placeholders.event=event;"
+          ],
+          "widget": {
+            "chartOptions": {
+              "dataZoom": false,
+              "description": " ",
+              "gridPagination": false,
+              "hasResetFilter": true,
+              "hideLegend": false,
+              "hideTitle": false,
+              "higherIsBetter": false,
+              "scrollToBottom": false,
+              "serverSidePagination": false,
+              "showArea": false,
+              "showCount": false,
+              "showStacked": false,
+              "showTotal": false,
+              "title": "Commit Details by Team"
+            },
+            "columns": [
+              {
+                "cellTemplateLines": [
+                  ""
+                ],
+                "cellTooltipTemplateLines": [
+                  ""
+                ],
+                "columnVisible": true,
+                "field": "_id",
+                "filtertype": "agTextColumnFilter",
+                "headerTooltipTemplateLines": [
+                  ""
+                ],
+                "percentWidth": false,
+                "progressColumn": false,
+                "progressTemplateLines": [
+                  ""
+                ],
+                "progressTooltipLines": [
+                  ""
+                ],
+                "statisticColumn": false,
+                "title": "Commit ID"
+              },
+              {
+                "cellTemplateLines": [
+                  ""
+                ],
+                "cellTooltipTemplateLines": [
+                  ""
+                ],
+                "columnVisible": true,
+                "field": "message",
+                "filtertype": "agTextColumnFilter",
+                "headerTooltipTemplateLines": [
+                  ""
+                ],
+                "percentWidth": false,
+                "progressColumn": false,
+                "progressTemplateLines": [
+                  ""
+                ],
+                "progressTooltipLines": [
+                  ""
+                ],
+                "statisticColumn": false,
+                "title": "Commit Message"
+              },
+              {
+                "cellTemplateLines": [
+                  ""
+                ],
+                "cellTooltipTemplateLines": [
+                  ""
+                ],
+                "columnVisible": true,
+                "field": "reponame",
+                "filtertype": "agTextColumnFilter",
+                "headerTooltipTemplateLines": [
+                  ""
+                ],
+                "percentWidth": false,
+                "progressColumn": false,
+                "progressTemplateLines": [
+                  ""
+                ],
+                "progressTooltipLines": [
+                  ""
+                ],
+                "statisticColumn": false,
+                "title": "Repo"
+              },
+              {
+                "cellTemplateLines": [
+                  ""
+                ],
+                "cellTooltipTemplateLines": [
+                  ""
+                ],
+                "columnVisible": true,
+                "field": "total",
+                "filtertype": "agNumberColumnFilter",
+                "headerTooltipTemplateLines": [
+                  ""
+                ],
+                "percentWidth": false,
+                "progressColumn": false,
+                "progressTemplateLines": [
+                  ""
+                ],
+                "progressTooltipLines": [
+                  ""
+                ],
+                "statisticColumn": false,
+                "title": "LOC Changed"
+              },
+              {
+                "cellTemplateLines": [
+                  ""
+                ],
+                "cellTooltipTemplateLines": [
+                  ""
+                ],
+                "columnVisible": true,
+                "field": "_date",
+                "filtertype": "agDateColumnFilter",
+                "headerTooltipTemplateLines": [
+                  ""
+                ],
+                "percentWidth": false,
+                "progressColumn": false,
+                "progressTemplateLines": [
+                  ""
+                ],
+                "progressTooltipLines": [
+                  ""
+                ],
+                "statisticColumn": false,
+                "title": "Date"
+              },
+              {
+                "cellTemplateLines": [
+                  ""
+                ],
+                "cellTooltipTemplateLines": [
+                  ""
+                ],
+                "columnVisible": true,
+                "field": "name",
+                "filtertype": "agTextColumnFilter",
+                "headerTooltipTemplateLines": [
+                  ""
+                ],
+                "percentWidth": false,
+                "progressColumn": false,
+                "progressTemplateLines": [
+                  ""
+                ],
+                "progressTooltipLines": [
+                  ""
+                ],
+                "statisticColumn": false,
+                "title": "Author"
+              },
+              {
+                "cellTemplateLines": [
+                  ""
+                ],
+                "cellTooltipTemplateLines": [
+                  ""
+                ],
+                "columnVisible": true,
+                "field": "email",
+                "filtertype": "agTextColumnFilter",
+                "headerTooltipTemplateLines": [
+                  ""
+                ],
+                "percentWidth": false,
+                "progressColumn": false,
+                "progressTemplateLines": [
+                  ""
+                ],
+                "progressTooltipLines": [
+                  ""
+                ],
+                "statisticColumn": false,
+                "title": "Email"
+              }
+            ],
+            "complexNamedDropdown": false,
+            "groupIndex": 0,
+            "id": "6dc9e153-29e6-4745-a174-96ee2fb8e9f5",
+            "query": [
+              {
+                "beforeScriptLines": [
+                  "def members = [];",
+                  "for(def member in placeholders.teamMembers.keySet()){",
+                  "  if(placeholders.teamMembers[member].equals(placeholders.event)) {",
+                  "\tmembers+=[member]; ",
+                  "  }",
+                  "}",
+                  "placeholders.tMembers=members;",
+                  "placeholders.counts = placeholders.result;",
+                  "",
+                  "def tM=[:];",
+                  "for(def item: placeholders.allTeams){",
+                  "  tM[item]=[];",
+                  "}",
+                  "for(def mem: placeholders.teamMembers.keySet()){",
+                  "  tM[ placeholders.teamMembers[mem] ] += [mem];",
+                  "}",
+                  "",
+                  "placeholders.tM = tM;"
+                ],
+                "placeholder": "result",
+                "queryLines": [
+                  "def sql=\"\"\"",
+                  "SELECT id AS _id, message, repoId as repoid, name, formatDateTime(_date, '%m-%d-%Y') as _date, ",
+                  "\ttotal, email",
+                  "FROM reporting.scm_commits",
+                  "WHERE ",
+                  "\ttimestamp >= :startDate",
+                  "    AND repoId in (:unitId)",
+                  "    AND NOT message LIKE \\'Merge%\\' ",
+                  "    AND message NOT LIKE \\'Pull%\\'",
+                  "     AND message NOT LIKE \\'PR%\\' ",
+                  "\"\"\";",
+                  "return sql;"
+                ],
+                "scriptLines": [
+                  "nToM = [\"01\":\"Jan\", \"02\":\"Feb\", \"03\":\"Mar\", \"04\":\"Apr\", \"05\":\"May\", \"06\":\"Jun\", \"07\":\"Jul\",",
+                  "        \"08\":\"Aug\", \"09\":\"Sep\", \"10\":\"Oct\", \"11\":\"Nov\", \"12\":\"Dec\" ];",
+                  "for(def entry: placeholders.result)",
+                  "{",
+                  "  def month=entry._date[0..1];",
+                  "  def siz=entry._date.length()-1;",
+                  "  entry._date= nToM[month]+entry._date[2..siz];",
+                  "}",
+                  "placeholders.showResult = placeholders.result;",
+                  "def tempRes = [];",
+                  "for(def s: placeholders.allTeams){",
+                  "\tdef map = new java.util.LinkedHashMap(); def sStr=\"\";",
+                  "    for(def dict: placeholders.counts){",
+                  "      if(dict[\"label\"].equals(s)){",
+                  "      \tsStr= s+\" ( \"+String.valueOf(dict[\"value\"])+\" )\";",
+                  "      }",
+                  "      if(dict[\"label\"].equals(placeholders.event)){",
+                  "        placeholders.defaultTabName = dict[\"label\"]+\" ( \"+String.valueOf(dict[\"value\"])+\" )\";",
+                  "      }",
+                  "    }",
+                  "    def teamArray=[];",
+                  "    for(def item: placeholders.result){",
+                  "      def email=item[\"email\"];",
+                  "      if( placeholders.teamMembers[email].equals(s) ){",
+                  "      \tteamArray+=[item]; ",
+                  "      }",
+                  "    }",
+                  "\tmap.put(\"tabName\", sStr); map.put(\"items\", teamArray); tempRes+=[map];",
+                  "}",
+                  "",
+                  "if(placeholders.defaultTeam)",
+                  "{",
+                  "  def idxOfDef=-1;",
+                  "  def dt=placeholders.defaultTeam;",
+                  "  for(def i=0; i<tempRes.size(); i++ )",
+                  "  {",
+                  "    if( tempRes[i].tabName.length() > dt.length() )",
+                  "    {",
+                  "      def tracker = true;",
+                  "      for( def ltr=0; ltr<dt.length(); ltr++)",
+                  "      {",
+                  "        if(dt.charAt(ltr) != tempRes[i].tabName.charAt(ltr) )",
+                  "        {",
+                  "          tracker=false; ",
+                  "          break;",
+                  "        }",
+                  "        if(tracker == true)",
+                  "        {",
+                  "          idxOfDef=i; break;",
+                  "        }",
+                  "      }",
+                  "    }",
+                  "  }",
+                  "",
+                  "  def unplaced=[];",
+                  "  for(def it: placeholders.result)",
+                  "  {",
+                  "    if(!placeholders.teamMembers.keySet().contains(it.email))",
+                  "    {",
+                  "      unplaced+=[it];",
+                  "    }",
+                  "  }",
+                  "  tempRes[idxOfDef].items+=unplaced;",
+                  "}",
+                  "",
+                  "",
+                  "placeholders.result=tempRes;"
+                ],
+                "type": "CLICKHOUSE"
+              },
+              {
+                "beforeScriptLines": [
+                  "def repos = [];",
+                  "for(def tab: placeholders.result){",
+                  "  for(def item: tab.items){",
+                  "    if(!repos.contains(item.repoid)){",
+                  "      repos+=[item.repoid]; ",
+                  "    }",
+                  "  }",
+                  "}",
+                  "placeholders.repos = repos;"
+                ],
+                "placeholder": "repo",
+                "queryLines": [
+                  "def sql = \"\"\"",
+                  "SELECT _id as id, key",
+                  "FROM edgeops.dp_unit",
+                  "WHERE _id IN (:repos)",
+                  "\"\"\";",
+                  "return sql;"
+                ],
+                "scriptLines": [
+                  "def map = [:];",
+                  "for(def repo: placeholders.repo){",
+                  "\tmap.put(repo.id, repo.key);",
+                  "} ",
+                  "placeholders.repomap=map;",
+                  "for(tab: placeholders.result){",
+                  "  for(item: tab.items){",
+                  "    item.put(\"reponame\", map[item.repoid])",
+                  "  }",
+                  "}"
+                ],
+                "type": "POSTGRESQL"
+              }
+            ],
+            "server": false,
+            "size": {
+              "defaultH": 0,
+              "defaultW": 0,
+              "minH": 0,
+              "minW": 0
+            },
+            "system": true,
+            "type": "gridWithTabs"
+          }
+        }
+      ],
+      "groupIndex": 0,
+      "id": "40acf4c7-d58b-4986-ab45-96c13b55d8c7",
+      "query": [
+        {
+          "beforeScriptLines": [
+            "placeholders.days = placeholders.date as long;",
+            "placeholders.startDate = placeholders.local_start_day - 86400 * 1000 * (placeholders.days - 1);",
+            "placeholders.result = []"
+          ],
+          "placeholder": "result",
+          "queryLines": [
+            "return placeholders.unitId?.size() ? ' SELECT email, count(*) as commitsCount  '+",
+            "'FROM reporting.scm_commits  '+",
+            "'WHERE timestamp >= :startDate   '+",
+            "'AND repoId IN (:unitId) '+",
+            "'AND NOT message like \\'Merge%\\' AND message NOT LIKE \\'Pull%\\' AND message NOT LIKE \\'PR%\\' '+",
+            "'GROUP BY email ' : '';"
+          ],
+          "scriptLines": [
+            "if (placeholders.teamMembers && placeholders.result) {",
+            "\tdef result = [:];",
+            "\tdef teamMembers = placeholders.membersMap;",
+            "\tdef defaultTeam = placeholders.defaultTeam;",
+            "    placeholders.result.each { item ->",
+            "      \tif (item.email) {",
+            "  \t\t\tdef team = teamMembers[item.email];",
+            "  \t\t\tif (team) {",
+            "              \tteam.each { t ->",
+            "    \t\t\t\tif (!result[t])",
+            "        \t\t\t\tresult[t] = 0;",
+            "    \t\t\t\tresult[t] += item.commitsCount; ",
+            "    \t\t\t}",
+            "  \t\t\t} else if (defaultTeam != null) {",
+            "    \t\t\tif (!result[defaultTeam])",
+            "      \t\t\t\tresult[defaultTeam] = 0;",
+            "    \t\t\tresult[defaultTeam] += item.commitsCount;",
+            "  \t\t\t} ",
+            "      \t}",
+            "\t}",
+            "",
+            "\tif (!placeholders.showActive) {",
+            "      \tdef notActiveTeams = placeholders.allTeams.findAll { !result.keySet().contains(it) }",
+            "      \tnotActiveTeams.each {team ->",
+            "    \t\tresult[team] = 0;",
+            "  \t\t}",
+            "\t}",
+            "  ",
+            "",
+            "\tplaceholders.result = [];",
+            "\tfor (def team in result.keySet().sort()) {",
+            "  \t\tplaceholders.result<<[label: team, value: result[team]]",
+            "\t}",
+            "} else {",
+            "\tplaceholders.result = [];",
+            "}"
+          ],
+          "type": "CLICKHOUSE"
+        }
+      ],
+      "server": true,
+      "system": true,
+      "type": "doughnutchart"
+    },
+    {
+      "chartOptions": {
+        "dataZoom": false,
+        "description": " ",
+        "gridPagination": false,
+        "hasResetFilter": false,
+        "hideLegend": false,
+        "hideTitle": false,
+        "higherIsBetter": false,
+        "isDynamicTable": false,
+        "scrollToBottom": false,
+        "serverSidePagination": false,
+        "showArea": false,
+        "showCount": false,
+        "showStacked": false,
+        "showTotal": false,
+        "title": " "
+      },
+      "columns": [
+        {
+          "cellTemplateLines": [
+            ""
+          ],
+          "cellTooltipTemplateLines": [
+            ""
+          ],
+          "columnVisible": true,
+          "field": "label",
+          "filtertype": "agTextColumnFilter",
+          "headerTooltipTemplateLines": [
+            ""
+          ],
+          "percentWidth": false,
+          "progressColumn": false,
+          "progressTemplateLines": [
+            ""
+          ],
+          "progressTooltipLines": [
+            ""
+          ],
+          "statisticColumn": false,
+          "title": "Teams"
+        },
+        {
+          "cellTemplateLines": [
+            ""
+          ],
+          "cellTooltipTemplateLines": [
+            ""
+          ],
+          "columnVisible": true,
+          "field": "value",
+          "filtertype": "agNumberColumnFilter",
+          "headerTooltipTemplateLines": [
+            ""
+          ],
+          "percentWidth": false,
+          "progressColumn": false,
+          "progressTemplateLines": [
+            ""
+          ],
+          "progressTooltipLines": [
+            ""
+          ],
+          "statisticColumn": false,
+          "title": "Number of Commit(s)"
+        }
+      ],
+      "complexNamedDropdown": false,
+      "groupIndex": 0,
+      "id": "9d219d4b-c4e0-4424-8f8f-489ae64fc299",
+      "query": [
+        {
+          "beforeScriptLines": [
+            "placeholders.days = placeholders.date as long;",
+            "placeholders.startDate = placeholders.local_start_day - 86400 * 1000 * (placeholders.days - 1);",
+            "placeholders.result = []"
+          ],
+          "placeholder": "result",
+          "queryLines": [
+            "return placeholders.unitId?.size() ? ' SELECT email, count(*) as commitsCount  '+",
+            "'FROM reporting.scm_commits  '+",
+            "'WHERE timestamp >= :startDate   '+",
+            "'AND repoId IN (:unitId) '+",
+            "'AND NOT message like \\'Merge%\\' AND message NOT LIKE \\'Pull%\\'  AND message NOT LIKE \\'PR%\\' '+",
+            "'GROUP BY email ' : '';"
+          ],
+          "scriptLines": [
+            "if (placeholders.teamMembers && placeholders.result) {",
+            "\tdef result = [:];",
+            "\tdef teamMembers = placeholders.membersMap;",
+            "\tdef defaultTeam = placeholders.defaultTeam;",
+            "  \tplaceholders.result.each { item ->",
+            "      \tif (item.email) {",
+            "  \t\t\tdef team = teamMembers[item.email];",
+            "  \t\t\tif (team) {",
+            "              \tteam.each { t ->",
+            "    \t\t\t\tif (!result[t])",
+            "        \t\t\t\tresult[t] = 0;",
+            "    \t\t\t\tresult[t] += item.commitsCount; ",
+            "    \t\t\t}",
+            "  \t\t\t}",
+            "    \t\telse if (defaultTeam) {",
+            "    \t\t\tif (!result[defaultTeam])",
+            "      \t\t\t\tresult[defaultTeam] = 0;",
+            "    \t\t\tresult[defaultTeam] += item.commitsCount;",
+            "  \t\t\t} ",
+            "        }",
+            "\t}",
+            "",
+            "\tif (!placeholders.showActive) {",
+            "      def notActiveTeams = placeholders.allTeams.findAll { !result.keySet().contains(it) }",
+            "        notActiveTeams.each {team ->",
+            "    \t\tresult[team] = 0;",
+            "  \t\t}",
+            "\t}",
+            "  ",
+            "",
+            "\tplaceholders.result = [];",
+            "\tfor (def team in result.keySet().sort()) {",
+            "  \t\tplaceholders.result<<[label: team, value: result[team]]",
+            "\t}",
+            "} else {",
+            "\tplaceholders.result = []",
+            "}"
+          ],
+          "type": "CLICKHOUSE"
+        }
+      ],
+      "server": true,
+      "size": {
+        "defaultH": 0.25,
+        "defaultW": 0.25,
+        "minH": 0.25,
+        "minW": 0.25
+      },
+      "system": false,
+      "type": "table"
+    }
+  ]
+}

@@ -1,0 +1,1083 @@
+{
+  "accordionColumns": [
+    {
+      "clickEventFunctionLines": [
+        "openLink(`${value.issueId.linkValue}`);"
+      ],
+      "field": "issueId",
+      "title": "Item ID"
+    },
+    {
+      "clickEventFunctionLines": [
+        ""
+      ],
+      "field": "assignee",
+      "title": "Assignee"
+    },
+    {
+      "clickEventFunctionLines": [
+        ""
+      ],
+      "field": "team",
+      "title": "Team"
+    },
+    {
+      "clickEventFunctionLines": [
+        ""
+      ],
+      "field": "sprint",
+      "title": "Sprint"
+    },
+    {
+      "clickEventFunctionLines": [
+        ""
+      ],
+      "field": "storyPoint",
+      "title": "Story Point"
+    },
+    {
+      "clickEventFunctionLines": [
+        ""
+      ],
+      "field": "status",
+      "title": "Status"
+    },
+    {
+      "clickEventFunctionLines": [
+        ""
+      ],
+      "field": "fixVersions",
+      "title": "Fix versions"
+    },
+    {
+      "clickEventFunctionLines": [
+        "linkClicked.emit(value);"
+      ],
+      "field": "view",
+      "title": "View Lifecycle"
+    }
+  ],
+  "chartOptions": {
+    "dataZoom": false,
+    "description": " ",
+    "gridPagination": false,
+    "hasResetFilter": false,
+    "hideLegend": false,
+    "hideTitle": false,
+    "higherIsBetter": false,
+    "scrollToBottom": false,
+    "serverSidePagination": false,
+    "showArea": false,
+    "showCount": false,
+    "showStacked": false,
+    "showTotal": false,
+    "title": "Feature Progress Report"
+  },
+  "columns": [
+    {
+      "cellTemplateLines": [
+        "let obj;",
+        "try {",
+        "  obj = JSON.parse(params.data.issueId);",
+        "} catch {",
+        "  return;",
+        "}",
+        "return `<span class=\"link-normal\">${obj.value}</span>`;"
+      ],
+      "cellTooltipTemplateLines": [
+        "let obj;",
+        "try {",
+        "  obj = JSON.parse(data.issueId);",
+        "} catch {",
+        "  return;",
+        "}",
+        "return `${obj.tooltip}`;"
+      ],
+      "columnVisible": true,
+      "field": "issueId",
+      "headerTooltipTemplateLines": [
+        ""
+      ],
+      "percentWidth": false,
+      "progressColumn": false,
+      "progressTemplateLines": [
+        ""
+      ],
+      "progressTooltipLines": [
+        ""
+      ],
+      "statisticColumn": false,
+      "title": "SubTask"
+    },
+    {
+      "cellTemplateLines": [
+        ""
+      ],
+      "cellTooltipTemplateLines": [
+        ""
+      ],
+      "columnVisible": true,
+      "field": "assignee",
+      "headerTooltipTemplateLines": [
+        ""
+      ],
+      "percentWidth": false,
+      "progressColumn": false,
+      "progressTemplateLines": [
+        ""
+      ],
+      "progressTooltipLines": [
+        ""
+      ],
+      "statisticColumn": false,
+      "title": "Assignee"
+    },
+    {
+      "cellTemplateLines": [
+        ""
+      ],
+      "cellTooltipTemplateLines": [
+        ""
+      ],
+      "columnVisible": true,
+      "field": "team",
+      "headerTooltipTemplateLines": [
+        ""
+      ],
+      "percentWidth": false,
+      "progressColumn": false,
+      "progressTemplateLines": [
+        ""
+      ],
+      "progressTooltipLines": [
+        ""
+      ],
+      "statisticColumn": false,
+      "title": "Team"
+    },
+    {
+      "cellTemplateLines": [
+        ""
+      ],
+      "cellTooltipTemplateLines": [
+        ""
+      ],
+      "columnVisible": true,
+      "field": "sprint",
+      "headerTooltipTemplateLines": [
+        ""
+      ],
+      "percentWidth": false,
+      "progressColumn": false,
+      "progressTemplateLines": [
+        ""
+      ],
+      "progressTooltipLines": [
+        ""
+      ],
+      "statisticColumn": false,
+      "title": "Sprint"
+    },
+    {
+      "cellTemplateLines": [
+        ""
+      ],
+      "cellTooltipTemplateLines": [
+        ""
+      ],
+      "columnVisible": true,
+      "field": "status",
+      "headerTooltipTemplateLines": [
+        ""
+      ],
+      "percentWidth": false,
+      "progressColumn": false,
+      "progressTemplateLines": [
+        ""
+      ],
+      "progressTooltipLines": [
+        ""
+      ],
+      "statisticColumn": false,
+      "title": "Status"
+    },
+    {
+      "cellTemplateLines": [
+        ""
+      ],
+      "cellTooltipTemplateLines": [
+        ""
+      ],
+      "columnVisible": true,
+      "field": "fixVersions",
+      "filtertype": "agTextColumnFilter",
+      "headerTooltipTemplateLines": [
+        ""
+      ],
+      "percentWidth": false,
+      "progressColumn": false,
+      "progressTemplateLines": [
+        ""
+      ],
+      "progressTooltipLines": [
+        ""
+      ],
+      "statisticColumn": false,
+      "title": "Fix versions"
+    },
+    {
+      "cellTemplateLines": [
+        "let obj;",
+        "try {",
+        "  obj = JSON.parse(params.data.view);",
+        "} catch {",
+        "  return;",
+        "}",
+        "return `<span class=\"link-normal\">${obj.value}</span>`;"
+      ],
+      "cellTooltipTemplateLines": [
+        "return 'view';"
+      ],
+      "columnVisible": true,
+      "field": "view",
+      "headerTooltipTemplateLines": [
+        ""
+      ],
+      "percentWidth": false,
+      "progressColumn": false,
+      "progressTemplateLines": [
+        ""
+      ],
+      "progressTooltipLines": [
+        ""
+      ],
+      "statisticColumn": false,
+      "title": "View Lifecycle"
+    }
+  ],
+  "complexNamedDropdown": false,
+  "eventDependencies": [
+    {
+      "condition": "feature_progress_page"
+    }
+  ],
+  "filters": [
+    {
+      "clearable": true,
+      "defaultValueLines": [
+        "return placeholders._options.issuesStatusFilter*.value"
+      ],
+      "dynamic": true,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "label": "Status",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": true,
+      "placeholder": "issuesStatusFilter",
+      "position": "LEFT",
+      "query": {
+        "beforeScriptLines": [
+          ""
+        ],
+        "queryLines": [
+          "return placeholders.projectKey?.size() && placeholders.allItems?.size() && (placeholders.issueTypes == null || !placeholders.issueTypes.isEmpty() )? \"\"\"",
+          "SELECT DISTINCT ",
+          "    ifNull(pi.status,'') AS value,",
+          "    ifNull(pi.status,'') AS label",
+          "FROM pace.pm_items  pi",
+          "WHERE pi.projectId = :projectKey",
+          "\tAND pi._id IN ( :allItems ) \"\"\" +",
+          "   (placeholders.issueTypes?.size() ? \" AND pi.issueType IN (:issueTypes) \" : \"\" ) +",
+          "\"\"\"",
+          "ORDER BY label",
+          "\"\"\" : \"\"",
+          ""
+        ],
+        "scriptLines": [
+          ""
+        ],
+        "type": "CLICKHOUSE"
+      },
+      "type": "DROPDOWN",
+      "width": "150"
+    },
+    {
+      "clearable": true,
+      "defaultValueLines": [
+        "placeholders._options.issuesDateFilter = [",
+        "\t\t\t[",
+        "\t\t\t'label': 'Created Date (oldest to newest)',",
+        "\t\t\t'value': 'created ASC'",
+        "\t\t\t],",
+        "\t\t\t[",
+        "\t\t\t'label': 'Created Date (newest to oldest)',",
+        "\t\t\t'value': 'created DESC'",
+        "\t\t\t],",
+        "\t\t\t[",
+        "\t\t\t'label': 'Resolved Date (oldest to newest)',",
+        "\t\t\t'value': 'resolved ASC'",
+        "\t\t\t],",
+        "\t\t\t[",
+        "\t\t\t'label': 'Resolved Date (newest to oldest) ',",
+        "\t\t\t'value': 'resolved DESC'",
+        "\t\t\t]",
+        "]",
+        "return placeholders._options.issuesDateFilter.get(0).value"
+      ],
+      "dynamic": false,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "label": "Date",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "issuesDateFilter",
+      "position": "LEFT",
+      "type": "DROPDOWN",
+      "width": "150"
+    },
+    {
+      "defaultValueLines": [
+        ""
+      ],
+      "dynamic": false,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "filteredTeamIds",
+      "position": "LEFT",
+      "query": {
+        "beforeScriptLines": [
+          ""
+        ],
+        "queryLines": [
+          "\"\"\"",
+          "SELECT DISTINCT",
+          "    pi.teamId ",
+          "FROM pace.pm_items pi",
+          "WHERE projectId = :projectKey ",
+          "\tAND `_id` IN (:allItems)",
+          "\"\"\" +",
+          "\t(placeholders.issueTypes?.size() ? \" AND issueType IN (:issueTypes) \" : \"\") +",
+          "\t(placeholders.issuesStatusFilter?.size() ? \" AND status IN (:issuesStatusFilter) \" : \"\")"
+        ],
+        "scriptLines": [
+          "placeholders.filteredTeamIds  = placeholders._options.filteredTeamIds*.teamId"
+        ],
+        "type": "CLICKHOUSE"
+      },
+      "type": "HIDDEN"
+    },
+    {
+      "clearable": true,
+      "defaultValueLines": [
+        "return  placeholders._options.teamFilter*.value"
+      ],
+      "dynamic": true,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "label": "Teams",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": true,
+      "placeholder": "teamFilter",
+      "position": "LEFT",
+      "query": {
+        "beforeScriptLines": [
+          ""
+        ],
+        "queryLines": [
+          "SELECT ",
+          "\tt.name as label,",
+          "    t.team_id as value",
+          "FROM edgeops.app_team_relation atr ",
+          "JOIN edgeops.dp_team t ON atr.team_id = t.pk AND t.team_id IN (:filteredTeamIds)",
+          "LEFT JOIN edgeops.board_team_relation btr ON btr.team_id = t.pk AND btr.app_id = atr.app_id ",
+          "LEFT JOIN edgeops.dp_board b ON btr.board_id = b.pk ",
+          "WHERE atr.app_id = :project_id AND (NOT t.deleted OR t.deleted IS NULL)",
+          "ORDER BY t.name"
+        ],
+        "scriptLines": [
+          "placeholders._options.teamFilter.push([\"value\": \"Unassigned\", \"label\": \"Unassigned\"]);",
+          "placeholders.teamsCount = placeholders._options.teamFilter?.size()"
+        ],
+        "type": "POSTGRESQL"
+      },
+      "type": "DROPDOWN",
+      "width": "150"
+    },
+    {
+      "buttonText": "Search",
+      "defaultValueLines": [
+        "''"
+      ],
+      "dynamic": false,
+      "hideLabel": true,
+      "isUiFilter": false,
+      "label": "Search",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "searchString",
+      "placeholderText": "Search by item key or name",
+      "position": "LEFT",
+      "type": "INPUT",
+      "width": "190"
+    }
+  ],
+  "groupIndex": 0,
+  "handlers": [
+    {
+      "eventId": "Link Clicked",
+      "scriptLines": [
+        "event.id = event.value.type === 'accordion' ? 'lifecycle_page' : 'team_progress_page';",
+        "",
+        "if (event.value.type === 'workDistribution') {",
+        "  placeholders.teamFilter = Object.entries(placeholders.teams).filter(([key, value]) => value === event.value.name).map(([key, value]) => key);",
+        "",
+        "  if (event.value.issueKeys) {",
+        "    placeholders.issueKeys = placeholders.issues.filter(issue => event.value.issueKeys.includes(issue.issue_key)).map(issue => issue.id)",
+        "  }",
+        "} else {",
+        "  placeholders.issueKey = event.value.subTaskIssueId || event.value.issueId.value;",
+        "  placeholders.associatedIssuesCount = event.value.associatedIssuesCount;",
+        "}",
+        "",
+        "messageBus.emit(event);"
+      ],
+      "type": "OUT"
+    },
+    {
+      "eventId": "feature_progress_page",
+      "scriptLines": [
+        "debugger;",
+        "placeholders.issueTypes = event.issueTypes;",
+        "reload();"
+      ],
+      "type": "IN"
+    }
+  ],
+  "help": {
+    "descriptionLines": [
+      "<p>Use this widget to view a progress report on feature items so you can troubleshoot quickly&nbsp;by identifying any blockers.</p>",
+      ""
+    ],
+    "howScoreCalculatedLines": [
+      ""
+    ],
+    "howScoreCanImprovedLines": [
+      ""
+    ],
+    "insights": [
+      {
+        "insight": "<p>Gain real-time visibility&nbsp;into the status of all items across the PI/Release, grouped by Feature/Epic in the&nbsp;Delivery Execution Summary</p>\n",
+        "recommendations": [
+          "<p>Determine if features are on track to be released by looking at the item details and investigating any blockers.</p>\n"
+        ]
+      }
+    ],
+    "summaryLines": [
+      "<p>This widget shows a list of&nbsp;features to be released in the&nbsp;selected date range/release&nbsp;and their completion status versus the time left in the&nbsp;Delivery Execution Summary.&nbsp;It can be filtered by status and created/resolved date.</p>",
+      "",
+      "<p>Click on Completion Status to view details about the feature including status and number of stories, bugs, tasks, etc. From here, select View to see the item's lifecycle from conception to deployment on the Item Traceability Board.</p>",
+      "",
+      "<p>Please see&nbsp;<a href=\"https://www.dagility.com/documentation/3/illuminate/generic-widget-usage\" rel=\"nofollow\">Generic Widget Usage</a>&nbsp;for instructions on how to view/set filters, thresholds, comments, etc., on all widgets.&nbsp;</p>",
+      "",
+      "<p><u>Filters</u></p>",
+      "",
+      "<p><strong>Status:&nbsp;</strong>Select which item statuses to include in the report. Default is set to All.</p>",
+      "",
+      "<p><strong>Date:&nbsp;</strong>Choose between Created Date or Resolved Date.</p>",
+      ""
+    ]
+  },
+  "id": "3243aca6-b564-45fc-a219-15774396afc9",
+  "inputPlaceholders": [
+    "searchStr",
+    "pageable",
+    "projectKey",
+    "dateRangeFilter",
+    "toolUrls",
+    "project_id",
+    "timezone",
+    "allItems",
+    "issueTypes",
+    "releases"
+  ],
+  "query": [
+    {
+      "beforeScriptLines": [
+        ""
+      ],
+      "placeholder": "fixVersions",
+      "queryLines": [
+        "SELECT DISTINCT",
+        "\tid,",
+        "\tname",
+        "FROM",
+        "\tpace.pm_releases",
+        "WHERE projectId = :projectKey "
+      ],
+      "scriptLines": [
+        "placeholders.fixVersions =  placeholders.fixVersions?.collectEntries{[it.id,it.name]}"
+      ],
+      "type": "CLICKHOUSE"
+    },
+    {
+      "beforeScriptLines": [
+        "if (placeholders.searchString == null) {",
+        "\tplaceholders.searchString = ''; ",
+        "}",
+        "",
+        "if (!placeholders.searchString.isEmpty()) {",
+        " placeholders.searchString = '%' + placeholders.searchString + '%' ",
+        "}"
+      ],
+      "placeholder": "firstLvl",
+      "queryLines": [
+        "return placeholders.allItems?.size() && placeholders.issuesStatusFilter?.size() ? ",
+        "(\"\"\"",
+        "SELECT  DISTINCT",
+        "\tfirstLvl.`key` AS issue_key, ",
+        "\tfirstLvl.`id` as issue_id, ",
+        "    ifNull(firstLvl.status, '') as status, ",
+        "    ifNull(firstLvl.statusCategory, '') as statusCategory, ",
+        "\tfirstLvl.summary as summary, ",
+        " \tif(firstLvl.statusCategory != 'Done', 0, 1) AS resolution, ",
+        "\tifNull(firstLvl.epicName,  ifNull(firstLvl.summary, '')) as epic_name, ",
+        "\tifNull(firstLvl.reporterId, '') as reporter, ",
+        "\tifNull(firstLvl.resolved, NULL) as resolved, ",
+        " \tifNull(firstLvl.teamId,'') as team_id, ",
+        "\tifNull(firstLvl.created, NULL) as created, ",
+        "\tfirstLvl.issueType as issue_type, ",
+        "\tfirstLvl.fixVersions as fix_versions, ",
+        "\tifNull(secondsLvl.resolved_in_epic_in, 0) as resolved_in_epic, ",
+        "\tifNull(secondsLvl.not_resolved_in_epic_in, 0) as not_resolved_in_epic, ",
+        "\tifNull(secondsLvl.story_points, 0) as story_points, ",
+        "\tifNull(secondsLvl.completed_story_points, 0) as completed_story_points, ",
+        "    ifNull(firstLvl.toolId, '') as toolid,",
+        "\tifNull(secondsLvl.keySet, []) as keySet ",
+        "FROM pace.pm_items firstLvl",
+        "LEFT JOIN (",
+        "\tSELECT ",
+        "\t\tparentId,",
+        "\t\ttoolId,",
+        "\t\t sum(if(statusCategory != 'Done', 0, 1)) AS resolved_in_epic_in,",
+        "\t\t sum(if(statusCategory != 'Done', 1, 0)) AS not_resolved_in_epic_in, ",
+        "\t\t sum(ifNull(points, 0)) AS story_points, ",
+        "         sum(if(statusCategory != 'Done', 0, ifNull(points, 0))) AS completed_story_points,",
+        "         groupArray(summary) AS nameSet,",
+        "         groupArray(`_id`) AS keySet",
+        "\tFROM pace.pm_items",
+        "\tWHERE  projectId = :projectKey",
+        "\t\tAND ifNull(status, '') IN (:issuesStatusFilter)",
+        " \t\tAND hasAny(fixVersions, [ :releases ]) ",
+        " \t\t\"\"\" +",
+        "\t\t(placeholders.issueTypes?.size() ? \" AND issueType IN (:issueTypes) \" : \"\") + ",
+        " \"\"\"",
+        "\tGROUP BY parentId, toolId",
+        "\t) secondsLvl ON secondsLvl.parentId = firstLvl.id AND  secondsLvl.toolId = firstLvl.toolId",
+        "WHERE firstLvl.projectId = :projectKey",
+        "\tAND firstLvl._id IN (:allItems)",
+        "\tAND ifNull(firstLvl.status, '') IN (:issuesStatusFilter) \"\"\" +",
+        "\t(placeholders.issueTypes?.size() ? \" AND issueType IN (:issueTypes) \" : \"\") + ",
+        "(placeholders.searchString.isEmpty() ? \"\" : \"\"\"",
+        "\tand (lowerUTF8(firstLvl.`key`) like lowerUTF8(:searchString) ",
+        "\tor arrayExists(x -> x LIKE :searchString, ifNull(secondsLvl.keySet, [])) = 1  ",
+        "\tor lowerUTF8(firstLvl.summary) like lowerUTF8(:searchString) ",
+        "\tor lowerUTF8(firstLvl.epicName) like lowerUTF8(:searchString)",
+        "\tor arrayExists(x -> lowerUTF8(x) LIKE lowerUTF8(:searchString), ifNull(secondsLvl.nameSet, [])) = 1 ) ",
+        "\"\"\") +",
+        "\" order by \" + placeholders.issuesDateFilter + ",
+        "\" limit \" + placeholders.pageable.limit + \" offset \"  + placeholders.pageable.offset * placeholders.pageable.limit",
+        ") : \"\""
+      ],
+      "scriptLines": [
+        "placeholders.secondLvlLimitIds = placeholders.firstLvl.stream()",
+        "                 \t\t\t\t\t.flatMap(val-> val.keySet.stream())",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet())"
+      ],
+      "type": "CLICKHOUSE"
+    },
+    {
+      "beforeScriptLines": [
+        ""
+      ],
+      "placeholder": "secondLvl",
+      "queryLines": [
+        "return placeholders.projectKey?.size() && placeholders.secondLvlLimitIds?.size() && placeholders.issuesStatusFilter?.size() ? \"\"\"",
+        "SELECT distinct ",
+        "\tsecondsLvl.`key` as issue_key, ",
+        "    secondsLvl.id as issue_id, ",
+        "\tifNull(secondsLvl.userId, '') as assignee, ",
+        "\tifNull(secondsLvl.teamId,'') as team_id, ",
+        "    ifNull(secondsLvl.status, '') as status, ",
+        "    ifNull(secondsLvl.statusCategory, '') as status_category, ",
+        " \tif(secondsLvl.statusCategory != 'Done', ifNull(secondsLvl.points, 0.0), 0) AS estimated_story_points, ",
+        " \tif(secondsLvl.resolution is not null, ifNull(secondsLvl.points, 0.0), 0) AS completed_story_points, ",
+        " \tifNull(secondsLvl.points, 0.0) AS story_points, ",
+        "\tsecondsLvl.summary as summary, ",
+        "\tif(secondsLvl.statusCategory != 'Done', 0, 1) AS resolution, ",
+        "\tifNull(secondsLvl.epicKey, '') as epic_key, ",
+        "\tifNull(secondsLvl.reporterId, '') as reporter, ",
+        "\tifNull(secondsLvl.parentId, '') as parent_id, ",
+        "\tifNull(secondsLvl.resolved, NULL) as resolved, ",
+        "\tifNull(secondsLvl.created, NULL) as created, ",
+        "\tsecondsLvl.issueType as issue_type, ",
+        "\tsecondsLvl.fixVersions as fix_versions, ",
+        "\tifNull(jsp.sprintName, 'Unassigned') as sprint_name, ",
+        "\tjsp.endDate as endDate, ",
+        "\tjsp.sprintName as name, ",
+        "    secondsLvl.toolId as toolid,",
+        "\tsecondsLvl.id as id ,",
+        "\tifNull(thirdLvl.keySet, []) as keySet ",
+        " FROM pace.pm_items as secondsLvl ",
+        " LEFT JOIN (",
+        "\tSELECT ",
+        "\t\tparentId,",
+        "\t\ttoolId, ",
+        "\t\tgroupArray(`_id`) AS keySet",
+        "\tFROM pace.pm_items",
+        "\tWHERE  projectId = :projectKey",
+        "\t\tAND ifNull(status, '') IN (:issuesStatusFilter)",
+        "        AND hasAny(fixVersions, [ :releases ]) ",
+        "        \"\"\" +",
+        "\t\t(placeholders.issueTypes?.size() ? \" AND issueType IN (:issueTypes) \" : \"\") + ",
+        " \"\"\"",
+        "\tGROUP BY parentId, toolId",
+        "\t) thirdLvl ON thirdLvl.parentId = secondsLvl.id AND  thirdLvl.toolId = secondsLvl.toolId   ",
+        "   LEFT JOIN ( SELECT `_id`, id, toolId ",
+        "\t\t\tFROM pace.pm_item_sprints ",
+        "\t\t\tWHERE projectId = :projectKey ",
+        "\t\t\tGROUP BY `_id`, id, toolId",
+        "\t\t\tHAVING SUM(sign) > 0",
+        "\t\t) AS jis on jis._id = secondsLvl._id and jis.toolId = secondsLvl.toolId",
+        "   LEFT JOIN reporting.board_sprints bs ON bs.sId = jis.id",
+        "   LEFT JOIN reporting.jira_sprint_progress as jsp ON jsp.id = bs.id and jsp.toolId = jis.toolId",
+        " WHERE secondsLvl.projectId = :projectKey ",
+        "        AND secondsLvl.`_id` IN ( :secondLvlLimitIds )",
+        "\"\"\" : \"\""
+      ],
+      "scriptLines": [
+        "placeholders.thirdLvlLimitIds = placeholders.secondLvl.stream()",
+        "                 \t\t\t\t\t.flatMap(val-> val.keySet.stream())",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet())"
+      ],
+      "type": "CLICKHOUSE"
+    },
+    {
+      "beforeScriptLines": [
+        ""
+      ],
+      "placeholder": "thirdLvl",
+      "queryLines": [
+        "return placeholders.projectKey?.size() && placeholders.thirdLvlLimitIds?.size() ? \"\"\"",
+        "SELECT distinct ",
+        "\tthirdLvl.`key` as issue_key, ",
+        "    thirdLvl.id as issue_id, ",
+        "\tifNull(thirdLvl.userId, '') as assignee, ",
+        "\tifNull(thirdLvl.teamId,'') as team_id, ",
+        "    ifNull(thirdLvl.status, '') as status, ",
+        "    ifNull(thirdLvl.statusCategory, '') as status_category, ",
+        " \tifNull(thirdLvl.points, 0.0) AS story_points, ",
+        "\tthirdLvl.summary as summary, ",
+        "\tifNull(thirdLvl.reporterId, '') as reporter, ",
+        "\tifNull(thirdLvl.parentId, '') as parent_id, ",
+        "\tifNull(thirdLvl.created, NULL) as created, ",
+        "\tthirdLvl.issueType as issue_type, ",
+        "\tthirdLvl.fixVersions as fix_versions, ",
+        "\tifNull(jsp.sprintName, 'Unassigned') as sprint_name, ",
+        "\tjsp.endDate as endDate, ",
+        "\tjsp.sprintName as name, ",
+        "    thirdLvl.toolId as toolid",
+        " FROM pace.pm_items as thirdLvl ",
+        "   LEFT JOIN ( SELECT `_id`, id, toolId ",
+        "\t\t\tFROM pace.pm_item_sprints ",
+        "\t\t\tWHERE projectId = :projectKey ",
+        "\t\t\tGROUP BY `_id`, id, toolId",
+        "\t\t\tHAVING SUM(sign) > 0",
+        "\t\t) AS jis on jis._id = thirdLvl._id and jis.toolId = thirdLvl.toolId",
+        "   LEFT JOIN reporting.board_sprints bs ON bs.sId = jis.id",
+        "   LEFT JOIN reporting.jira_sprint_progress as jsp ON jsp.id = bs.id and jsp.toolId = jis.toolId",
+        " WHERE thirdLvl.projectId = :projectKey ",
+        "        AND thirdLvl.`_id` IN ( :thirdLvlLimitIds )",
+        "        AND hasAny(fixVersions, [ :releases ]) ",
+        "\"\"\" : \"\""
+      ],
+      "scriptLines": [
+        ""
+      ],
+      "type": "CLICKHOUSE"
+    },
+    {
+      "beforeScriptLines": [
+        "placeholders.teamIds = [] as Set",
+        "placeholders.teamIds.addAll(placeholders.firstLvl.stream()",
+        "                 \t\t\t\t\t.map(item-> item.team_id)",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet()))",
+        "placeholders.teamIds.addAll(placeholders.secondLvl.stream()",
+        "                 \t\t\t\t\t.map(item-> item.team_id)",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet()))",
+        "placeholders.teamIds.addAll(placeholders.thirdLvl.stream()",
+        "                 \t\t\t\t\t.map(item-> item.team_id)",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet()))"
+      ],
+      "placeholder": "teams",
+      "queryLines": [
+        "return placeholders.teamIds?.size() ? \"\"\"",
+        "SELECT DISTINCT",
+        "\tt.name AS team_name,",
+        "\tt.team_id AS team_id",
+        "FROM",
+        "\tdp_team t",
+        "WHERE",
+        "\tt.team_id IN (:teamIds)",
+        "\"\"\" : \"\""
+      ],
+      "scriptLines": [
+        "placeholders.remove(\"searchStr\");",
+        "placeholders.remove(\"pageable\");",
+        "",
+        "placeholders.teams = placeholders.teams.stream()",
+        "\t\t\t\t\t\t\t\t.collect(java.util.stream.Collectors.toMap(val -> val.team_id, val -> val.team_name))",
+        "",
+        "placeholders.teams.put('Unassigned', \"Unassigned\")"
+      ],
+      "type": "POSTGRESQL"
+    },
+    {
+      "beforeScriptLines": [
+        "placeholders.userIds = [] as Set",
+        "placeholders.userIds.addAll(placeholders.firstLvl.stream()",
+        "                 \t\t\t\t\t.map(item-> item.reporter)",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet())) ",
+        "placeholders.userIds.addAll(placeholders.secondLvl.stream()",
+        "                 \t\t\t\t\t.map(item-> item.assignee)",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet())) ",
+        "placeholders.userIds.addAll(placeholders.secondLvl.stream()",
+        "                 \t\t\t\t\t.map(item-> item.reporter)",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet())) ",
+        "placeholders.userIds.addAll(placeholders.thirdLvl.stream()",
+        "                 \t\t\t\t\t.map(item-> item.assignee)",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet())) ",
+        "placeholders.userIds.addAll(placeholders.thirdLvl.stream()",
+        "                 \t\t\t\t\t.map(item-> item.reporter)",
+        "                 \t\t\t\t\t.collect(java.util.stream.Collectors.toSet())) "
+      ],
+      "placeholder": "users",
+      "queryLines": [
+        "return placeholders.userIds?.size() ? \"\"\"",
+        "SELECT",
+        "\tu.first_name,",
+        "\tu.last_name,",
+        "\tu._id AS user_id",
+        "FROM",
+        "\tapp_user u",
+        "WHERE",
+        "\tu._id IN (:userIds)",
+        "\"\"\" : \"\""
+      ],
+      "scriptLines": [
+        "placeholders.users = placeholders.users.stream()\t\t\t\t\t\t\t\t",
+        "\t\t\t\t\t\t\t\t.collect(java.util.stream.Collectors.toMap(val -> val.user_id, val -> {[",
+        "                                                                           'firstName': val.first_name,",
+        "                                                                           'lastName' : val.last_name",
+        "                                                                           ]}))",
+        "placeholders.users.put('', [",
+        "'firstName' : 'Unassigned',",
+        "'lastName'  : ''",
+        "])"
+      ],
+      "type": "POSTGRESQL"
+    },
+    {
+      "beforeScriptLines": [
+        ""
+      ],
+      "placeholder": "newDates",
+      "queryLines": [
+        "placeholders.releases?.size() == 1 ? \"\"\"",
+        "SELECT startDate, jr.endDate AS releaseDate ",
+        "FROM pace.pm_releases jr ",
+        "WHERE jr.id = :releases",
+        "\"\"\" : \"\""
+      ],
+      "scriptLines": [
+        ""
+      ],
+      "type": "CLICKHOUSE"
+    },
+    {
+      "beforeScriptLines": [
+        ""
+      ],
+      "placeholder": "toolUrls",
+      "queryLines": [
+        "SELECT DISTINCT",
+        "\tt.tool_id AS toolid,",
+        "\tt.base_url AS url",
+        "FROM",
+        "\tedgeops.tool t",
+        "WHERE",
+        "\tjsonb_exists(t.plugin_categories,'PM')"
+      ],
+      "scriptLines": [
+        "def toolsMap = [:]",
+        "for (def tool : placeholders.toolUrls) {",
+        "  toolsMap.put(tool.toolid, tool.url)",
+        "  toolsMap.put(tool.toolid + \".PM\", tool.url)",
+        "}",
+        "placeholders.toolUrls = toolsMap"
+      ],
+      "type": "POSTGRESQL"
+    },
+    {
+      "beforeScriptLines": [
+        ""
+      ],
+      "placeholder": "result",
+      "queryLines": [
+        "\"\""
+      ],
+      "scriptLines": [
+        "def getToolLink(def tool) {",
+        "  def toolId = tool?.split(/\\./)[0];",
+        "  def url;",
+        "  if (toolId != null) {",
+        "    if (toolId && placeholders.toolUrls && placeholders.toolUrls?.size()) {",
+        "      url = placeholders.toolUrls[toolId];",
+        "    }",
+        "  }",
+        "  return url;",
+        "}",
+        "",
+        "def result = [:]",
+        "result.items = []",
+        "",
+        "def startDate = \"\";",
+        "def endDate = \"\";",
+        "if (placeholders.releases?.size() == 1) {",
+        "  placeholders.newStartDate = placeholders.newDates[0]?.startDate.toString()",
+        "  placeholders.newEndDate = placeholders.newDates[0]?.releaseDate.toString()",
+        "}",
+        "",
+        "if (placeholders.dateRangeFilter.startDate != null) {",
+        "\tstartDate = placeholders.newStartDate ? placeholders.newStartDate.substring(0, 10) : placeholders.dateRangeFilter.startDate.substring(0, 10);",
+        "}",
+        "if (placeholders.dateRangeFilter.endDate != null) {",
+        "\tendDate = placeholders.newEndDate ? placeholders.newEndDate.substring(0, 10) : placeholders.dateRangeFilter.endDate.substring(0, 10);",
+        "}",
+        "",
+        "def start = org.joda.time.LocalDate.parse(startDate)",
+        "def end   = org.joda.time.LocalDate.parse(endDate)",
+        "",
+        "for (def fItem : placeholders.firstLvl) {  ",
+        " ",
+        "  def keyLinkitem = fItem.toolid.toLowerCase().contains(\"ado\") ? fItem.issue_key.split('-').last() : fItem.issue_key ",
+        "  def progress = 0",
+        "  if (fItem.not_resolved_in_epic + fItem.resolved_in_epic > 0) {",
+        "    progress = fItem.resolved_in_epic * 100 / (fItem.not_resolved_in_epic + fItem.resolved_in_epic)",
+        "  } ",
+        "  ",
+        "  def secondLvlByTeam = placeholders.secondLvl.findAll{it.parent_id == fItem.issue_id}?.groupBy{it.team_id}",
+        "  ",
+        "  def series = []",
+        "  ",
+        "  secondLvlByTeam?.forEach( (teamId, teamData) -> {",
+        "    def issues = []",
+        "    def teamItemsByStatus = teamData?.groupBy{it.status}",
+        "    ",
+        "    teamItemsByStatus?.forEach((status, itemsByStatus) -> {",
+        "    issues.add([",
+        "    \t\t\t\t'name'\t: status,",
+        "    \t\t\t\t'count'\t: itemsByStatus?.size()",
+        "    \t\t\t\t])",
+        "  \t})",
+        "    ",
+        "    def tooltipData = [placeholders.teams.getOrDefault(teamId,' Unassigned') + ' - Cumulative']",
+        "    ",
+        "    def teamMembers = teamData*.assignee.toSet()",
+        "    \t\t\t\t\t.collect{\tdef user = placeholders.users.getOrDefault(it, ['firstName':'Unassigned','lastName':'']);",
+        "                                \treturn user.firstName + \" \" + user.lastName",
+        "                                }",
+        "    \t\t\t\t\t.toSet()",
+        "    \t\t\t\t\t.sort()",
+        "  ",
+        "    tooltipData.addAll(teamMembers)",
+        "    ",
+        "    series.add([",
+        "  \t\t'name'\t\t\t:\tplaceholders.teams.getOrDefault(teamId,' Unassigned'),\t",
+        "  \t\t'completedCount':\tteamData*.status_category.count('Done'),",
+        "  \t\t'count'\t\t\t: \tteamData?.size(),",
+        "      \t'tooltipDate'\t: \t\"\",",
+        "  \t\t'tooltipData'\t: \ttooltipData,",
+        "  \t\t'issues'\t\t: \tissues,",
+        "      \t'issueKeys'\t\t:   teamData*.issue_key,",
+        "  \t\t'order'\t\t\t:\tteamId.isEmpty() ? 'A' : placeholders.teams.getOrDefault(teamId,' Unassigned')",
+        "\t\t\t\t])",
+        "  })",
+        "    ",
+        "  def totalIssuesCount = fItem.not_resolved_in_epic + fItem.resolved_in_epic;",
+        "  ",
+        "  def reporter = placeholders.users.getOrDefault(fItem.reporter, null)",
+        "  ",
+        "  def withoutParent = []",
+        "  ",
+        "  def sItemsByType = placeholders.secondLvl?.findAll{it.parent_id == fItem.issue_id}?.groupBy{it.issue_type}",
+        "  ",
+        "  sItemsByType?.forEach((itemType, sItems) -> {",
+        "    def accordionItems = []",
+        "    ",
+        "    for(def sItem in sItems) {",
+        "",
+        "      def tItems = placeholders.thirdLvl.findAll{it.parent_id == sItem.issue_id}",
+        "",
+        "      def thirdLvlItems = []",
+        "      for(def tItem in tItems) {",
+        "\t        def assignee = placeholders.users.getOrDefault(tItem.assignee, null)",
+        "\t        def keyLinkelement = tItem.toolid.toLowerCase().contains(\"ado\") ? tItem.issue_key.split('-').last() : tItem.issue_key",
+        "\t        thirdLvlItems.add([",
+        "\t                'issueId'       : [",
+        "\t                        'value'    : tItem.issue_key,",
+        "\t                        'tooltip'  : tItem.summary,",
+        "\t                        'linkValue': getToolLink(tItem.toolid) + '/browse/' + keyLinkelement",
+        "\t                ],",
+        "\t                'subTaskIssueId': tItem.issue_key,",
+        "\t                'assignee'      : assignee ? (assignee.firstName + \" \" + assignee.lastName) : \"\",",
+        "\t                'team'          : placeholders.teams.getOrDefault(tItem.team_id, ''),",
+        "\t                'sprint'        : tItem.sprint_name,",
+        "              \t\t'fixVersions'   : tItem.fix_versions.collect{placeholders.fixVersions[it]}.join(','),",
+        "\t                'status'        : tItem.status,",
+        "\t                'pmTool'        : getToolLink(tItem.toolid),",
+        "\t                'view'          : [",
+        "\t                        'value'     : \"view\",",
+        "\t                        'messageBus': true",
+        "\t                ]",
+        "\t        ])           ",
+        "      }",
+        "      ",
+        "\t  def keyLinkSItem = sItem.toolid.toLowerCase().contains(\"ado\") ? sItem.issue_key.split('-').last() : sItem.issue_key",
+        " \t  def assignee = placeholders.users.getOrDefault(sItem.assignee, null)",
+        "      ",
+        "      accordionItems.add([",
+        "    \t\t'accordionValue' : [",
+        "                        'issueId' : [",
+        "                                'value'    : sItem.issue_key,",
+        "                                'tooltip'  : sItem.summary,",
+        "                                'linkValue': getToolLink(sItem.toolid) + '/browse/' + keyLinkSItem",
+        "                        ],",
+        "                        'assignee'             : assignee ? (assignee.firstName + ' ' + assignee.lastName) : '',",
+        "                        'team'                 : placeholders.teams.getOrDefault(sItem.team_id, ''),",
+        "                        'sprint'               : sItem.sprint_name,",
+        "                        'storyPoint'           : sItem.story_points,",
+        "                        'status'               : sItem.status,",
+        "                        'fixVersions'          : sItem.fix_versions.collect{placeholders.fixVersions[it]}.join(','),",
+        "                        'pmTool'               : getToolLink(sItem.toolid),",
+        "                        'view'                 : 'view',",
+        "                        'associatedIssuesCount': thirdLvlItems?.size()",
+        "            ],",
+        "        \t'tableItems' : thirdLvlItems",
+        "    \t])",
+        "    }",
+        "    ",
+        "  \twithoutParent.add([",
+        "    \t'tabName'\t\t: itemType + \"(\" + sItems?.size() + \")\",",
+        "      \t'accordionItems': accordionItems",
+        "    ])",
+        "  })",
+        "  ",
+        "  ",
+        "  ",
+        "  def issue = [ ",
+        "\t  'id'\t\t\t\t: fItem.issue_key,",
+        "\t  'status'\t\t\t: fItem.status,",
+        "\t  'statusCategory'\t: fItem.statusCategory,",
+        "\t  'link'\t\t\t: getToolLink(fItem.toolid) + '/browse/' + keyLinkitem,",
+        "\t  'name'\t\t\t: fItem.epic_name,",
+        "\t  'startDate'\t\t: fItem.created,",
+        "\t  'endDate'\t\t\t: fItem.resolved == null ? 'NA' : fItem.resolved,",
+        "      'progress'\t\t: progress,",
+        "      'remainingDays'\t: org.joda.time.Days.daysBetween(org.joda.time.LocalDate.now(), end).getDays(),",
+        "      'totalDays'\t\t: org.joda.time.Days.daysBetween(start, end).getDays(),",
+        "      'user'\t\t\t: [",
+        "     \t\t'firstName'\t: (reporter ?  (reporter.firstName.equals(\"Unassigned\") ? 'Inactive User' : reporter.firstName) : null),",
+        "  \t \t\t'lastName'\t: reporter ?  reporter.lastName : null",
+        "      ],",
+        "      'tooltip'\t\t\t: [",
+        "\t        'createdDate'         : fItem.created,",
+        "\t        'resolvedDate'        : (fItem.resolved) == null ? 'NA' : fItem.resolved,",
+        "\t        'remainingDays'       : org.joda.time.Days.daysBetween(org.joda.time.LocalDate.now(), end).getDays(),",
+        "\t        'totalIssues'         : totalIssuesCount > 0 ? totalIssuesCount : 0,",
+        "\t        'resolvedIssues'      : fItem.resolved_in_epic > 0 ? fItem.resolved_in_epic : 0,",
+        "\t        'estimatedStoryPoints': fItem.story_points,",
+        "\t        'completedStoryPoints': fItem.completed_story_points,",
+        "\t        'statuses'            : [",
+        "\t                [",
+        "\t                        'color': 'Done',",
+        "\t                        'count': placeholders.secondLvl.findAll{it.parent_id == fItem.issue_id}*.status_category.count('Done'),",
+        "\t                        'value': 'Done'",
+        "\t                ],",
+        "\t                [",
+        "\t                        'color': 'in Progress',",
+        "\t                        'count': placeholders.secondLvl.findAll{it.parent_id == fItem.issue_id}*.status_category.count('in Progress'),",
+        "\t                        'value': 'In Progress'",
+        "\t                ],",
+        "\t                [",
+        "\t                        'color': 'To Do',",
+        "\t                        'count': placeholders.secondLvl.findAll{it.parent_id == fItem.issue_id}*.status_category.count('To Do'),",
+        "\t                        'value': 'To Do'",
+        "\t                ]",
+        "\t        ]",
+        "\t  ],",
+        "      'workDistributionTooltip' : [",
+        "\t\t 'workDistributionType'\t: \"Team\",",
+        "\t\t 'remainingIssues'\t\t: fItem.not_resolved_in_epic,",
+        "\t\t 'remainingStoryPoints'\t: fItem.story_points - fItem.completed_story_points,",
+        "\t\t 'series'\t\t\t\t: series",
+        "\t\t]",
+        "\t]",
+        "  ",
+        "  result.items.add([",
+        "    'issue'\t\t: issue,",
+        "    'issueItems': ['withoutParent': withoutParent]",
+        "  ])",
+        "}",
+        "",
+        "placeholders.result = result;"
+      ],
+      "type": "POSTGRESQL"
+    }
+  ],
+  "server": true,
+  "size": {
+    "defaultH": 0.16666666666666666,
+    "defaultW": 0.16666666666666666,
+    "minH": 0.16666666666666666,
+    "minW": 0.16666666666666666
+  },
+  "statuses": [
+    {
+      "icon": "facPending",
+      "label": "in Progress",
+      "statusType": "waiting",
+      "value": "In Progress"
+    },
+    {
+      "icon": "simpleCheck",
+      "label": "Done",
+      "statusType": "approved",
+      "value": "Done"
+    },
+    {
+      "icon": "facPending",
+      "label": "To Do",
+      "statusType": "to-do",
+      "value": "To Do"
+    }
+  ],
+  "system": true,
+  "type": "piFeatureCompletionStatus"
+}

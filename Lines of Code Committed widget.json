@@ -1,0 +1,574 @@
+{
+  "chartOptions": {
+    "dataZoom": false,
+    "description": " ",
+    "disableBottomLine": false,
+    "enterableTooltip": false,
+    "gridPagination": false,
+    "hasResetFilter": false,
+    "hideLegend": false,
+    "hideTitle": false,
+    "higherIsBetter": false,
+    "relatedThreshold": false,
+    "scrollToBottom": false,
+    "serverSidePagination": false,
+    "showArea": true,
+    "showCount": false,
+    "showStacked": false,
+    "showTotal": false,
+    "title": "Lines of Code Committed",
+    "tooltipFormatterLines": [
+      ""
+    ],
+    "xlabel": "Date",
+    "ylabel": "Lines of Code Committed"
+  },
+  "colors": [
+    "#01b27c",
+    "#ff9800"
+  ],
+  "complexNamedDropdown": false,
+  "drilldownList": [
+    {
+      "default": false,
+      "displayType": "modal",
+      "drilldownScriptLines": [
+        "placeholders.event = event",
+        "placeholders.choicenDate = event.label",
+        "placeholders.series = event.series",
+        "  ",
+        "if(event.series == \"Lines of code added\"){",
+        "\tplaceholders.added = true",
+        "  \tplaceholders.columnName = \"Lines Added\"",
+        "} else {",
+        " placeholders.added = false; ",
+        "  placeholders.columnName = \"Lines Deleted\"",
+        "}"
+      ],
+      "widget": {
+        "chartOptions": {
+          "dataZoom": false,
+          "description": " ",
+          "gridPagination": true,
+          "hasResetFilter": true,
+          "hideLegend": false,
+          "hideTitle": false,
+          "higherIsBetter": false,
+          "isDynamicTable": false,
+          "scrollToBottom": false,
+          "serverSidePagination": true,
+          "showArea": false,
+          "showCount": false,
+          "showStacked": false,
+          "showTotal": false,
+          "title": "{series}"
+        },
+        "columns": [
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "commitId",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Commit ID"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "summary",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Summary"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "changes",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "{columnName}"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "repoName",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Repo"
+          }
+        ],
+        "complexNamedDropdown": false,
+        "groupIndex": 0,
+        "id": "73d70487-e076-41d3-94f9-73f96e9afedb",
+        "query": [
+          {
+            "beforeScriptLines": [
+              "placeholders.parsedDate = new Date(placeholders.choicenDate)"
+            ],
+            "placeholder": "test",
+            "queryLines": [
+              "return \"select toStartOfDay( toDate(:parsedDate)) as startOfDay, toStartOfDay(subtractMinutes(addDays(toDate(:parsedDate),1),1)) as endOfDay\""
+            ],
+            "scriptLines": [
+              ""
+            ],
+            "type": "CLICKHOUSE"
+          },
+          {
+            "beforeScriptLines": [
+              "placeholders.choicenDateTimestamp = placeholders.choicenDate;",
+              ""
+            ],
+            "placeholder": "result",
+            "queryLines": [
+              "if (!placeholders.repositories || placeholders.repositories.isEmpty() || !placeholders.days) {",
+              "\treturn \"\";",
+              "}",
+              "",
+              "",
+              "def isUsersEmails = (!placeholders.usersEmails || placeholders.usersEmails.isEmpty()) ? false : true;",
+              "def isNotCurrentTeam = (!placeholders.notCurrentTeam || placeholders.notCurrentTeam.isEmpty()) ? false : true;",
+              "def isUsersUndefined = (!placeholders.usersUndefined || placeholders.usersUndefined.isEmpty()) ? false : true;",
+              "",
+              "def query = \"SELECT id as commitId, message as summary, repoId, \"+ (placeholders.added ? 'additions': 'deletions') + \" as changes \" + ",
+              "    \"from reporting.scm_commits \"+",
+              "    \"WHERE date >= toStartOfDay( toDate(:parsedDate)) and date <= toStartOfDay(addDays(toDate(:parsedDate),0.9)) \"+",
+              "\t\"AND email IN (:usersEmails) \"+",
+              "    \"AND repoId IN (:repositories) \"+",
+              "\t\"AND NOT message like 'Merge%' AND NOT message like 'Pull%' \"+",
+              "    \"ORDER BY `date` \";  ",
+              "    ",
+              "def queryForDefault = \"SELECT id as commitId, message as summary, repoId, \"+ (placeholders.added ? 'additions': 'deletions') + \" as changes \" +",
+              "    \"from reporting.scm_commits \"+",
+              "    \"WHERE date >= toStartOfDay( toDate(:parsedDate)) and date <= toStartOfDay(addDays(toDate(:parsedDate),0.9)) \"+",
+              "\t\"AND email not IN (:notCurrentTeam) \"+",
+              "    \"AND repoId IN (:repositories) \"+",
+              "\t\"AND NOT message like 'Merge%' AND NOT message like 'Pull%' \"+",
+              "    \"ORDER BY `date` \";  ",
+              "    ",
+              "def queryForFilter = \"SELECT id as commitId, message as summary, repoId, \"+ (placeholders.added ? 'additions': 'deletions') + \" as changes \" +",
+              "    \"from reporting.scm_commits \"+",
+              "    \"WHERE date >= toStartOfDay( toDate(:parsedDate)) and date <= toStartOfDay(addDays(toDate(:parsedDate),0.9)) \"+",
+              "\t\"AND email = :teamMembersFilter \"+",
+              "    \"AND repoId IN (:repositories) \"+",
+              "\t\"AND NOT message like 'Merge%' AND NOT message like 'Pull%'\"+",
+              "    \"ORDER BY `date` \";  ",
+              "    ",
+              "def queryForUndefined =   \"SELECT id as commitId, message as summary, repoId, \"+ (placeholders.added ? 'additions': 'deletions') + \" as changes \" +",
+              "    \"from reporting.scm_commits \"+",
+              "    \"WHERE date >= toStartOfDay( toDate(:parsedDate)) and date <= toStartOfDay(addDays(toDate(:parsedDate),0.9)) \"+",
+              "\t\"AND email not IN (:usersUndefined) \"+",
+              "    \"AND repoId IN (:repositories) \"+",
+              "\t\"AND NOT message like 'Merge%' AND NOT message like 'Pull%' \"+",
+              "    \"ORDER BY `date` \";   ",
+              " placeholders.sqlTest = query;",
+              "  if (placeholders.teamMembersFilter.equals('All'))",
+              " \treturn placeholders.isDefault ? ( isNotCurrentTeam ? queryForDefault : \"\" ) : ( isUsersEmails ? query : \"\");",
+              "  else if (placeholders.teamMembersFilter.equals('UNMATCHED') && placeholders.isDefault && isUsersUndefined)",
+              "  \treturn queryForUndefined;",
+              "  else if (!isUsersUndefined) ",
+              "  \treturn \"\";",
+              "  else",
+              "    return queryForFilter;",
+              "    ",
+              ""
+            ],
+            "scriptLines": [
+              "def repoIds = []",
+              "",
+              "for (result :placeholders.result){",
+              "  if(result.containsKey('repoId')){",
+              "    if(!repoIds.contains(result.repoId)){",
+              "  \t\trepoIds.add(result.repoId)",
+              "    }",
+              "  }",
+              "}",
+              "placeholders.repoIds = repoIds;"
+            ],
+            "type": "CLICKHOUSE"
+          },
+          {
+            "beforeScriptLines": [
+              ""
+            ],
+            "placeholder": "repoName",
+            "queryLines": [
+              "return \"\"\"select repo.name as name, repo._id as key",
+              "from edgeops.dp_unit as repo",
+              "where repo._id in (:repoIds)\"\"\""
+            ],
+            "scriptLines": [
+              "repoNameKeyMap = [:]",
+              "for( repo:placeholders.repoName){",
+              "  if(!repoNameKeyMap.keySet().contains(repo.key)) {",
+              "   \trepoNameKeyMap.put(repo.key,repo.name) ",
+              "  }",
+              "}",
+              "",
+              "for (result : placeholders.result){",
+              "  if(result.containsKey('repoId')){",
+              "  \t result.put('repoName', repoNameKeyMap[result.repoId])",
+              "  }",
+              "  else {",
+              "   \tresult.put('repoName', 'Undefined'); ",
+              "  }",
+              "}"
+            ],
+            "type": "POSTGRESQL"
+          }
+        ],
+        "server": true,
+        "size": {
+          "defaultH": 0,
+          "defaultW": 0,
+          "minH": 0,
+          "minW": 0
+        },
+        "system": true,
+        "type": "table"
+      }
+    }
+  ],
+  "filters": [
+    {
+      "clearable": true,
+      "defaultValueLines": [
+        "return placeholders._options.teamMembersFilter?.size() ? placeholders._options.teamMembersFilter[0].value : null;"
+      ],
+      "dynamic": true,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "label": "Team Member",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "teamMembersFilter",
+      "position": "LEFT",
+      "query": {
+        "beforeScriptLines": [
+          ""
+        ],
+        "queryLines": [
+          "return placeholders.team_id  ? \"select u.email as value, concat(u.first_name, ' ', u.last_name) as label, u.login as login \" +",
+          "\"from edgeops.dp_user_team_relation utr  \"+",
+          "\"join edgeops.app_user u on utr.user_id = u.pk \"+",
+          "\"where utr.team_id = :team_id \" +",
+          "\"order by label asc \" : \"\""
+        ],
+        "scriptLines": [
+          "placeholders.usersEmails = placeholders._options.teamMembersFilter?.collect{x -> x.value};",
+          "placeholders._options.teamMembersFilter?.push([\"value\": 'All', \"label\": 'All', \"login\": '']);",
+          "placeholders._options.teamMembersFilter?.add([\"value\": 'UNMATCHED', \"label\": 'UNMATCHED', login: '']);"
+        ],
+        "type": "POSTGRESQL"
+      },
+      "type": "DROPDOWN",
+      "width": "150"
+    },
+    {
+      "defaultValueLines": [
+        "return 7"
+      ],
+      "dynamic": false,
+      "label": "Days",
+      "multiple": false,
+      "placeholder": "days",
+      "type": "INPUT",
+      "width": "60"
+    },
+    {
+      "clearable": true,
+      "defaultValueLines": [
+        "return placeholders._options.repositories?.size() ? placeholders._options.repositories.collect{it.value} : []"
+      ],
+      "dynamic": true,
+      "hideLabel": false,
+      "label": "Repository",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": true,
+      "placeholder": "repositories",
+      "position": "LEFT",
+      "query": {
+        "beforeScriptLines": [
+          "placeholders._options.repositories = [];"
+        ],
+        "queryLines": [
+          "def sql = \"\"\"select repo.name as label, repo._id as value, repo.pk as id",
+          "from edgeops.dp_unit as repo",
+          "where repo.pk in (:unit_id) ",
+          "order by label\"\"\";",
+          "",
+          "return placeholders.unit_id && placeholders.unit_id.size() ? sql : \"\";"
+        ],
+        "scriptLines": [
+          "placeholders.repositoriesWithNames = placeholders._options.repositories;"
+        ],
+        "type": "POSTGRESQL"
+      },
+      "type": "DROPDOWN",
+      "width": "150"
+    }
+  ],
+  "groupIndex": 1,
+  "help": {
+    "descriptionLines": [
+      "<p>Use this widget to track a team member's&nbsp;development speed and the&nbsp;quality of the code by looking at how many lines of code committed are being delivered per day.</p>",
+      ""
+    ],
+    "howScoreCalculatedLines": [
+      ""
+    ],
+    "howScoreCanImprovedLines": [
+      ""
+    ],
+    "insights": [
+      {
+        "insight": "<p>Gain insights into each team member's&nbsp;engagement and productivity in the project.</p>\n",
+        "recommendations": [
+          "<p>Have team members make small and frequent commits&nbsp;so it is easier for them to go back and investigate if something goes wrong.</p>\n"
+        ]
+      }
+    ],
+    "summaryLines": [
+      "<p>This widget shows the number of lines of code committed for a selected team member, number of days, and repositories.</p>",
+      "",
+      "<p>On hover, view the team member's number of lines of code added and deleted for that day.</p>",
+      "",
+      "<p>Please see&nbsp;<a href=\"https://www.dagility.com/documentation/3/illuminate/generic-widget-usage\" rel=\"nofollow\">Generic Widget Usage</a>&nbsp;for instructions on how to view/set filters, thresholds, comments, etc., on all widgets.&nbsp;</p>",
+      "",
+      "<p><u>Filters</u></p>",
+      "",
+      "<p><strong>Team Member:&nbsp;</strong>Select a team member from the list. Default is set to All.</p>",
+      "",
+      "<p><strong>Days:</strong>&nbsp;Specify the number of previous days to filter on starting from today. Default is set to 7 days.</p>",
+      "",
+      "<p><strong>Repository</strong>: Specify which repositories should be included. Default is set to All.</p>",
+      ""
+    ]
+  },
+  "id": "ed87424b-c742-47d2-983f-5adf3200432a",
+  "inputPlaceholders": [
+    "timezone",
+    "local_start_day",
+    "team_id",
+    "unit_id",
+    "project_id"
+  ],
+  "query": [
+    {
+      "placeholder": "isDefault",
+      "queryLines": [
+        "return placeholders.team_id  ? \"select COALESCE(dt.is_default, false) as is_default \"+",
+        "\"from edgeops.dp_team dt \"+",
+        "\"where dt.pk = :team_id \" : \"\""
+      ],
+      "scriptLines": [
+        "if (!placeholders.isDefault) {",
+        " \tplaceholders.isDefault = []; ",
+        "}",
+        "placeholders.isDefault = placeholders.isDefault.size() ? placeholders.isDefault[0].is_default : false;"
+      ],
+      "type": "POSTGRESQL"
+    },
+    {
+      "placeholder": "teamMembersForDefault",
+      "queryLines": [
+        "def sql = \"\"\"select u.email as value, concat(u.first_name, ' ', u.last_name) as label, u.login, atr.team_id as team_id ",
+        "from app_team_relation atr ",
+        "join dp_user_team_relation utr on atr.team_id = utr.team_id ",
+        "join app_user u on utr.user_id = u.pk ",
+        "where atr.app_id = :project_id ",
+        "order by email\"\"\";",
+        "",
+        "return placeholders.project_id && placeholders.project_id.size() == 1 ? sql : \"\";"
+      ],
+      "scriptLines": [
+        "if (!placeholders.teamMembersForDefault) {",
+        "\tplaceholders.teamMembersForDefault = [];  ",
+        "}",
+        "",
+        "placeholders.notCurrentTeam = placeholders.teamMembersForDefault.findAll{el -> el.team_id != placeholders.team_id[0]}.collect{el -> el.value};",
+        "placeholders.notCurrentTeam += ['']  ",
+        "placeholders.usersUndefined = placeholders.teamMembersForDefault.collect{el -> el.value};"
+      ],
+      "type": "POSTGRESQL"
+    },
+    {
+      "beforeScriptLines": [
+        "try {",
+        "  placeholders.days = Long.valueOf(placeholders.days);",
+        "  placeholders.startDate = placeholders.local_start_day - 86400 * 1000 * (placeholders.days - 1);",
+        "  placeholders.selectedItem = placeholders.teamMembersFilter;",
+        "  placeholders.result = [];",
+        "} catch (Exception e) {",
+        "  placeholders.days = null;",
+        "}"
+      ],
+      "placeholder": "result",
+      "queryLines": [
+        "if (!placeholders.repositories || placeholders.repositories.isEmpty() || !placeholders.days) {",
+        "\treturn \"\";",
+        "}",
+        "",
+        "def isUsersEmails = (!placeholders.usersEmails || placeholders.usersEmails.isEmpty()) ? false : true;",
+        "def isNotCurrentTeam = (!placeholders.notCurrentTeam || placeholders.notCurrentTeam.isEmpty()) ? false : true;",
+        "def isUsersUndefined = (!placeholders.usersUndefined || placeholders.usersUndefined.isEmpty()) ? false : true;",
+        "",
+        "def query = \"SELECT formatDateTime(date, '%F') as label, sum(additions) as added, sum(deletions) as deleted \"+",
+        "    \"from reporting.scm_commits \"+",
+        "    \"WHERE timestamp >= :startDate \"+",
+        "\t\"AND email IN (:usersEmails) \"+",
+        "    \"AND repoId IN (:repositories) \"+",
+        "\t\"AND NOT message like 'Merge%' AND NOT message like 'Pull%' AND NOT message LIKE 'PR%' \"+",
+        "    \"GROUP by `date` ORDER BY `date` \";  ",
+        "    ",
+        "def queryForDefault = \"SELECT formatDateTime(date, '%F') as label, sum(additions) as added, sum(deletions) as deleted \"+",
+        "    \"from reporting.scm_commits \"+",
+        "    \"WHERE timestamp >= :startDate \"+",
+        "\t\"AND email not IN (:notCurrentTeam) \"+",
+        "    \"AND repoId IN (:repositories) \"+",
+        "\t\"AND NOT message like 'Merge%' AND NOT message like 'Pull%' AND NOT message LIKE 'PR%' \"+",
+        "    \"GROUP by `date` ORDER BY `date` \";  ",
+        "    ",
+        "def queryForFilter = \"SELECT formatDateTime(date, '%F') as label, sum(additions) as added, sum(deletions) as deleted \"+",
+        "    \"from reporting.scm_commits \"+",
+        "    \"WHERE timestamp >= :startDate \"+",
+        "\t\"AND email = :teamMembersFilter \"+",
+        "    \"AND repoId IN (:repositories) \"+",
+        "\t\"AND NOT message like 'Merge%' AND NOT message like 'Pull%' AND NOT message LIKE 'PR%' \"+",
+        "    \"GROUP by `date` ORDER BY `date` \";  ",
+        "    ",
+        "def queryForUndefined =   \"SELECT formatDateTime(date, '%F') as label, sum(additions) as added, sum(deletions) as deleted \"+",
+        "    \"from reporting.scm_commits \"+",
+        "    \"WHERE timestamp >= :startDate \"+",
+        "\t\"AND email not IN (:usersUndefined) \"+",
+        "    \"AND repoId IN (:repositories) \"+",
+        "\t\"AND NOT message like 'Merge%' AND NOT message like 'Pull%' AND NOT message like 'PR%' \"+",
+        "    \"GROUP by `date` ORDER BY `date` \";   ",
+        "    ",
+        "  if (placeholders.teamMembersFilter.equals('All'))",
+        " \treturn placeholders.isDefault ? ( isNotCurrentTeam ? queryForDefault : \"\" ) : ( isUsersEmails ? query : \"\");",
+        "  else if (placeholders.teamMembersFilter.equals('UNMATCHED') && placeholders.isDefault && isUsersUndefined)",
+        "  \treturn queryForUndefined;",
+        "  else if (!isUsersUndefined) ",
+        "  \treturn \"\";",
+        "  else",
+        "    return queryForFilter;"
+      ],
+      "scriptLines": [
+        "def labelFormatter = java.time.format.DateTimeFormatter.ofPattern(\"MMM-dd-yyyy\");",
+        "",
+        "def result = [];",
+        "for (def i = 0; i < placeholders.days; i++) {",
+        "  def checkDate = java.time.Instant.ofEpochMilli(placeholders.local_start_day - 86400 * 1000 * (placeholders.days - 1)).atZone(java.time.ZoneId.of(placeholders.timezone)).toLocalDate();",
+        "  checkDate = checkDate.plusDays(i);",
+        "  def record = placeholders.result.find{val -> val.label.equals(checkDate.toString())};",
+        "    if (record == null) {",
+        "      result.add([",
+        "        \"label\": checkDate.format(labelFormatter), ",
+        "        \"added\": 0, ",
+        "        \"deleted\": 0",
+        "      ]);",
+        "    }",
+        "  else {",
+        "    result.add([",
+        "      \"label\": checkDate.format(labelFormatter), ",
+        "      \"added\": record.added, ",
+        "      \"deleted\": record.deleted",
+        "    ]);",
+        "  }",
+        "}",
+        "placeholders.result = result;"
+      ],
+      "type": "CLICKHOUSE"
+    }
+  ],
+  "series": [
+    {
+      "color": "#2ecc71",
+      "column": "added",
+      "label": "Lines of code added",
+      "seriesArea": false
+    },
+    {
+      "color": "#fb4e4e",
+      "column": "deleted",
+      "label": "Lines of code deleted",
+      "seriesArea": false
+    }
+  ],
+  "server": true,
+  "size": {
+    "defaultH": 0.16666666666666666,
+    "defaultW": 0.16666666666666666,
+    "minH": 0.16666666666666666,
+    "minW": 0.16666666666666666
+  },
+  "system": true,
+  "type": "linechart"
+}

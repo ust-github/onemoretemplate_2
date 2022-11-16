@@ -1,0 +1,1009 @@
+{
+  "chartOptions": {
+    "dataZoom": false,
+    "description": " ",
+    "disableBottomLine": false,
+    "enterableTooltip": false,
+    "gridPagination": false,
+    "hasResetFilter": false,
+    "hideLegend": false,
+    "hideTitle": false,
+    "higherIsBetter": false,
+    "relatedThreshold": false,
+    "scrollToBottom": false,
+    "serverSidePagination": false,
+    "showArea": false,
+    "showCount": false,
+    "showStacked": false,
+    "showTotal": false,
+    "title": "Code Commits by Component",
+    "tooltipFormatterLines": [
+      ""
+    ],
+    "xlabel": "Date",
+    "ylabel": "Commit Count"
+  },
+  "complexNamedDropdown": false,
+  "drilldownList": [
+    {
+      "default": false,
+      "displayType": "modal",
+      "drilldownScriptLines": [
+        "placeholders.event = event;",
+        "placeholders.teamFilterCopy = placeholders.teamFilter",
+        "placeholders.selectedTeam= event.series;"
+      ],
+      "widget": {
+        "chartOptions": {
+          "dataZoom": false,
+          "description": "{selectedTeam} - past {date} days",
+          "gridPagination": false,
+          "hasResetFilter": true,
+          "hideLegend": false,
+          "hideTitle": false,
+          "higherIsBetter": false,
+          "scrollToBottom": false,
+          "serverSidePagination": false,
+          "showArea": false,
+          "showCount": false,
+          "showStacked": false,
+          "showTotal": false,
+          "title": "Code Commits by Day"
+        },
+        "columns": [
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "_id",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Commit ID"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "message",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Commit Message"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "reponame",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Repo"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "additions",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "LOC Added"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "deletions",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "LOC Deleted"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "name",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Author"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "email",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Email"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": false,
+            "field": "date",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Date"
+          },
+          {
+            "cellTemplateLines": [
+              ""
+            ],
+            "cellTooltipTemplateLines": [
+              ""
+            ],
+            "columnVisible": true,
+            "field": "isMember",
+            "filtertype": "agTextColumnFilter",
+            "headerTooltipTemplateLines": [
+              ""
+            ],
+            "percentWidth": false,
+            "progressColumn": false,
+            "progressTemplateLines": [
+              ""
+            ],
+            "progressTooltipLines": [
+              ""
+            ],
+            "statisticColumn": false,
+            "title": "Member"
+          }
+        ],
+        "complexNamedDropdown": false,
+        "filters": [
+          {
+            "clearable": true,
+            "defaultValueLines": [
+              "/*def idx=0;",
+              "for(def i=0; i<placeholders._options.teamFilter1.size(); i++){",
+              "  if(placeholders._options.teamFilter1[i].value == placeholders.event.series){",
+              "    idx=i; break;",
+              "  }",
+              "}",
+              "placeholders.IDX09090=idx;",
+              "return placeholders._options.teamFilter1[idx].value;*/",
+              "return placeholders.event.series;"
+            ],
+            "dynamic": true,
+            "hideLabel": false,
+            "isUiFilter": false,
+            "label": "Team",
+            "mainFilter": false,
+            "minWidth": "100",
+            "multiple": false,
+            "placeholder": "teamFilter1",
+            "position": "LEFT",
+            "query": {
+              "beforeScriptLines": [
+                ""
+              ],
+              "queryLines": [
+                "return \"\";"
+              ],
+              "scriptLines": [
+                "def teams=[];",
+                "for(def t: placeholders.teamMembers){",
+                "  if(!teams.contains(t.name)){",
+                "    teams+=[t.name];",
+                "  }",
+                "}",
+                "fMap=[];",
+                "for(def team: teams){",
+                "  fMap += [ [ label: team, value: team ] ];",
+                "}",
+                "",
+                "placeholders._options.teamFilter1=fMap;",
+                "",
+                "def defaultTeam=\"\";",
+                "def teamIdsMap=[:];",
+                "for(def tm: placeholders.teamMembers){",
+                "  if( !teamIdsMap.keySet().contains(tm.name) ){",
+                "    teamIdsMap[tm.name]=tm.team_id;",
+                "  }",
+                "  if( defaultTeam==\"\" && tm.is_default ){",
+                "    defaultTeam=tm.name;",
+                "  }",
+                "}",
+                "",
+                "placeholders.defaultTeam=defaultTeam;",
+                "placeholders.teamIds=teamIdsMap;"
+              ],
+              "type": "POSTGRESQL"
+            },
+            "type": "DROPDOWN",
+            "width": "150"
+          },
+          {
+            "clearable": true,
+            "defaultValueLines": [
+              "return placeholders.teamFilterCopy;"
+            ],
+            "dynamic": true,
+            "hideLabel": false,
+            "isUiFilter": false,
+            "label": "Member",
+            "mainFilter": false,
+            "minWidth": "100",
+            "multiple": true,
+            "placeholder": "teamMembers1",
+            "position": "LEFT",
+            "query": {
+              "beforeScriptLines": [
+                ""
+              ],
+              "queryLines": [
+                "return placeholders.project_id && placeholders.project_id.size()",
+                "? \"select u.email as value, concat(u.first_name, ' ', u.last_name) as label, u.login, atr.team_id as team_id \" +",
+                "\"from edgeops.app_team_relation atr \" +",
+                "\"join edgeops.dp_user_team_relation utr on atr.team_id = utr.team_id \" +",
+                "\"join edgeops.app_user u on utr.user_id = u.pk \" +",
+                "\"where atr.app_id in (:project_id) \" +",
+                "\"order by email\"",
+                ": \"\";"
+              ],
+              "scriptLines": [
+                "if (!placeholders._options.teamFilter1 || !placeholders.team_id) {",
+                "  placeholders.notCurrentTeam = [];",
+                "  placeholders.currentTeam = [];",
+                "  placeholders.teamMembersAll = [];",
+                "  return;",
+                "}",
+                "placeholders.teamMembersAll = placeholders._options.teamFilter1;",
+                "placeholders.notCurrentTeam = placeholders.teamMembersAll.findAll{el -> el.team_id != placeholders.team_id[0]}.collect{el -> el.value} + [''];",
+                "",
+                "placeholders.currentTeamFull = placeholders.teamMembersAll.findAll{el -> el.team_id == placeholders.team_id[0]};",
+                "placeholders.currentTeam = placeholders.currentTeamFull.collect{el -> el.value};",
+                "",
+                "placeholders.forTeamFilter = [];",
+                "placeholders.currentTeamInfo = new java.util.HashMap<>();",
+                "placeholders.teamMembersAll.findAll{el -> el.team_id == placeholders.team_id[0]}.each{el ->",
+                "  \tif (el.value && el.label) {",
+                "\t\tplaceholders.currentTeamInfo[el.value] = el.label;",
+                "      ",
+                "      if (!placeholders.forTeamFilter.find{y -> y.label.equals(el.label)}) {",
+                "        \tplaceholders.forTeamFilter.add([\"label\": el.label, \"value\": el.label ])",
+                "        }",
+                "    }",
+                "}",
+                "",
+                "",
+                "if (placeholders.isDefault) {",
+                "\tplaceholders.forTeamFilter.add([\"label\": \"UNMATCH\", \"value\": \"UNMATCH\"] );",
+                "}",
+                "placeholders._options.teamFilter1 = placeholders.forTeamFilter;",
+                "",
+                ""
+              ],
+              "type": "POSTGRESQL"
+            },
+            "type": "DROPDOWN",
+            "width": "150"
+          }
+        ],
+        "groupIndex": 0,
+        "id": "ed956d8b-9f0e-4cdc-86b9-c63a411e9aae",
+        "query": [
+          {
+            "beforeScriptLines": [
+              "placeholders.event.series=placeholders.teamFilter1;",
+              "placeholders.dateDes=placeholders.event.series;",
+              "def members=[];",
+              "for(def member: placeholders.teamMembers){",
+              "  if(member.name.equals(placeholders.event.series)){",
+              "  \tmembers+=[member.email]; ",
+              "  }",
+              "}",
+              "placeholders.eventMembers=members;",
+              "placeholders.evenStr = placeholders.event.label;",
+              "",
+              "def defaultTeam=\"\";",
+              "def teamIdsMap=[:];",
+              "for(def tm: placeholders.teamMembers){",
+              "  if( !teamIdsMap.keySet().contains(tm.name) ){",
+              "    teamIdsMap[tm.name]=tm.team_id;",
+              "  }",
+              "  if( defaultTeam==\"\" && tm.is_default ){",
+              "    defaultTeam=tm.name;",
+              "  }",
+              "}",
+              "",
+              "placeholders.defaultTeam=defaultTeam;",
+              "placeholders.teamIds=teamIdsMap;",
+              "placeholders.eventTeamId = teamIdsMap[placeholders.event.series];",
+              "def emIdMap=[:];",
+              "for(def itr: placeholders.teamMembers){",
+              "  emIdMap[itr.email]=itr.team_id;",
+              "}",
+              "placeholders.emailToIdMap=emIdMap;",
+              "",
+              ""
+            ],
+            "placeholder": "result",
+            "queryLines": [
+              "def sql = \"\"\"",
+              "SELECT repoId repoid, toDate(timestamp/1000,:timezone) AS date, ",
+              "additions, deletions, message, name, email, id as _id",
+              "FROM reporting.scm_commits ",
+              "WHERE ",
+              "\ttimestamp >= :start_date AND timestamp <= :end_date",
+              "\tAND repoId IN (:filterComponents) ",
+              "    AND email IN (:teamMembers1)",
+              "\tAND NOT (message like 'Merge%' OR message like 'Pull%' OR message like 'PR%') ",
+              "\"\"\";",
+              "",
+              "return sql;"
+            ],
+            "scriptLines": [
+              "import java.time.*;",
+              "",
+              "def formatter = new java.text.SimpleDateFormat(\"MMM-dd-yyyy\", java.util.Locale.forLanguageTag(\"en-US\"));",
+              "",
+              "/*",
+              "def formDate=[]; ",
+              "def z=placeholders.start_date;",
+              "for(def i=0; i<placeholders.date; i++){",
+              "  def formatX=new Date(z);",
+              "  def temp=formatter.format(formatX);",
+              "  formDate+=[temp];",
+              "  z+=(86400*1000);",
+              "}",
+              "*/",
+              "",
+              "def z=placeholders.start_date; def tsDates=[];",
+              "for( def i=0; i<placeholders.date; i++ )",
+              "{",
+              "  tsDates += [z];",
+              "  z+=(86400*1000);",
+              "}",
+              "for( def i=0; i<tsDates.size(); i++)",
+              "{",
+              "  def formatX=new Date(tsDates[i]);",
+              "  def temp=formatter.format(formatX);",
+              "  tsDates[i]=temp;",
+              "}",
+              "def dates=tsDates;",
+              "",
+              "//def dates=[];",
+              "for(def item: placeholders.result){",
+              "  def formatted=new Date(item.date.getTime());",
+              "  def temp=formatter.format(formatted);",
+              "  item.date=temp.toString();",
+              "//  if(!dates.contains(temp)){ dates+=[temp]; }",
+              "}",
+              "//dates.sort();",
+              "for(def d: dates){ d=d.toString(); }",
+              "",
+              "",
+              "def res=[];",
+              "for(def date: dates){ ",
+              "  res+=[ [tabName: date, items:[] ] ]; ",
+              "}",
+              "",
+              "def unplaced=[];",
+              "for(def member: placeholders.result){",
+              "  if(!placeholders.emailToIdMap.keySet().contains(member.email)){",
+              "    unplaced+=[member];",
+              "  }",
+              "}",
+              "placeholders.unplaced=unplaced;",
+              "        ",
+              "",
+              "for(def item: placeholders.result) ",
+              "{",
+              "  for(def tab: res)",
+              "  {",
+              "    if(tab.tabName.equals(item.date)) ",
+              "    {",
+              "      def userTeam=placeholders.emailToIdMap[item.email];",
+              "      if(userTeam==placeholders.eventTeamId) ",
+              "      {",
+              "        tab.items+=[item];",
+              "      }",
+              "    }",
+              "  }",
+              "}",
+              "",
+              "if(placeholders.unplaced.size()>0 && placeholders.event.series.equals(placeholders.defaultTeam)) ",
+              "{",
+              "  for(def tab: res) ",
+              "  {",
+              "    def dateArr=[];",
+              "    for(def it: placeholders.unplaced)",
+              "    {",
+              "      if(it.date.equals(tab.tabName))",
+              "      {",
+              "        dateArr+=[it];",
+              "      }",
+              "    }",
+              "    tab.items+=dateArr;",
+              "  }",
+              "}",
+              "",
+              "for(def tab: res)",
+              "{",
+              "  tab.tabName+=\" (\"+String.valueOf(tab.items.size())+\")\";",
+              "}",
+              "",
+              "",
+              "def idxOfDef=0; ",
+              "for(def i=0; i<res.size(); i++)",
+              "{",
+              "  if(res[i].tabName[0..5].equals(placeholders.event.label))",
+              "  {",
+              "    idxOfDef=i; break;",
+              "  }",
+              "}",
+              "placeholders.defaultTabName=res[idxOfDef].tabName; ",
+              "",
+              "for(def tab: res)",
+              "{",
+              "  for(def item: tab.items)",
+              "  {",
+              "    if(placeholders.teamMemberEmails.contains(item.email))",
+              "    {",
+              "      item[\"isMember\"]=\"yes\";",
+              "    } else { item[\"isMember\"]=\"no\"; }",
+              "  }",
+              "}",
+              "",
+              "placeholders.eventStr=placeholders.event.label;",
+              "placeholders.result=res;",
+              "",
+              ""
+            ],
+            "type": "CLICKHOUSE"
+          },
+          {
+            "beforeScriptLines": [
+              "def repos=[];",
+              "for(def tab: placeholders.result){",
+              "  for(def item: tab.items){",
+              "    if(!repos.contains(item.repoid)){",
+              "      repos+=[item.repoid];",
+              "    }",
+              "  }",
+              "}",
+              "placeholders.repos=repos;"
+            ],
+            "placeholder": "repos",
+            "queryLines": [
+              "if(placeholders.repos.size()==0){",
+              "\treturn \"\";",
+              "}",
+              "def sql=\"\"\"",
+              "SELECT _id AS id, key",
+              "FROM edgeops.dp_unit",
+              "WHERE _id IN (:repos)",
+              "\"\"\";",
+              "return sql;"
+            ],
+            "scriptLines": [
+              "def map=[:];",
+              "for(def repo: placeholders.repos){",
+              "  map.put(repo.id, repo.key);",
+              "}",
+              "placeholders.rMap=map;",
+              "for(def tab: placeholders.result){",
+              "  for(def item: tab.items){",
+              "    item.reponame=map[item.repoid];",
+              "  }",
+              "}"
+            ],
+            "type": "POSTGRESQL"
+          }
+        ],
+        "server": true,
+        "size": {
+          "defaultH": 0,
+          "defaultW": 0,
+          "minH": 0,
+          "minW": 0
+        },
+        "system": true,
+        "type": "gridWithTabs"
+      }
+    }
+  ],
+  "filters": [
+    {
+      "defaultValueLines": [
+        "return 7"
+      ],
+      "dynamic": false,
+      "hideLabel": false,
+      "label": "Days",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "date",
+      "position": "LEFT",
+      "type": "INPUT",
+      "width": "60"
+    },
+    {
+      "clearable": true,
+      "defaultValueLines": [
+        "return placeholders._options.components && placeholders._options.components.size() ? placeholders._options.components.collect{val -> val.value} : [];"
+      ],
+      "dynamic": true,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "label": "Component",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": true,
+      "placeholder": "components",
+      "position": "LEFT",
+      "query": {
+        "beforeScriptLines": [
+          ""
+        ],
+        "queryLines": [
+          "def sql = \"select name as label, id as value \" +",
+          "\"from edgeops.component \" +",
+          "\"where project_id = :project_id \";",
+          "return placeholders.project_id && placeholders.project_id.size() ? sql : '';"
+        ],
+        "scriptLines": [
+          ""
+        ],
+        "type": "POSTGRESQL"
+      },
+      "type": "DROPDOWN",
+      "width": "150"
+    },
+    {
+      "clearable": true,
+      "defaultValueLines": [
+        "return placeholders._options.teams.collect{val -> val.value}"
+      ],
+      "dynamic": true,
+      "hideLabel": false,
+      "label": "Team",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": true,
+      "placeholder": "teams",
+      "position": "LEFT",
+      "query": {
+        "beforeScriptLines": [
+          ""
+        ],
+        "queryLines": [
+          "def sql = \"select t.pk as value, t.name as label \"+",
+          "\"from edgeops.app_team_relation rl_at join edgeops.dp_team t on rl_at.team_id = t.pk \"+",
+          "\"where rl_at.app_id in (:project_id) and (t.deleted is null or not t.deleted) \"+",
+          "\"order by t.name\";",
+          "",
+          "return placeholders.project_id && placeholders.project_id.size() ? sql : '';"
+        ],
+        "scriptLines": [
+          ""
+        ],
+        "type": "POSTGRESQL"
+      },
+      "type": "DROPDOWN",
+      "width": "150"
+    },
+    {
+      "clearable": true,
+      "defaultValueLines": [
+        "return placeholders._options.teamFilter && placeholders._options.teamFilter.size() ? placeholders._options.teamFilter.collect{el -> el.value} : [];"
+      ],
+      "dynamic": true,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "label": "Member",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": true,
+      "placeholder": "teamFilter",
+      "position": "LEFT",
+      "query": {
+        "beforeScriptLines": [
+          ""
+        ],
+        "queryLines": [
+          "return placeholders.project_id && placeholders.project_id.size()",
+          "? \"select u.email as value, concat(u.first_name, ' ', u.last_name) as label, u.login, atr.team_id as team_id \" +",
+          "\"from edgeops.app_team_relation atr \" +",
+          "\"join edgeops.dp_user_team_relation utr on atr.team_id = utr.team_id \" +",
+          "\"join edgeops.app_user u on utr.user_id = u.pk \" +",
+          "\"where atr.app_id in (:project_id) \" +",
+          "\"order by email\"",
+          ": \"\";"
+        ],
+        "scriptLines": [
+          "if (!placeholders._options.teamFilter || !placeholders.team_id) {",
+          "  placeholders.notCurrentTeam = [];",
+          "  placeholders.currentTeam = [];",
+          "  placeholders.teamMembersAll = [];",
+          "  return;",
+          "}",
+          "placeholders.teamMembersAll = placeholders._options.teamFilter;",
+          "placeholders.notCurrentTeam = placeholders.teamMembersAll.findAll{el -> el.team_id != placeholders.team_id[0]}.collect{el -> el.value} + [''];",
+          "",
+          "placeholders.currentTeamFull = placeholders.teamMembersAll.findAll{el -> el.team_id == placeholders.team_id[0]};",
+          "placeholders.currentTeam = placeholders.currentTeamFull.collect{el -> el.value};",
+          "",
+          "placeholders.forTeamFilter = [];",
+          "placeholders.currentTeamInfo = new java.util.HashMap<>();",
+          "placeholders.teamMembersAll.findAll{el -> el.team_id == placeholders.team_id[0]}.each{el ->",
+          "  \tif (el.value && el.label) {",
+          "\t\tplaceholders.currentTeamInfo[el.value] = el.label;",
+          "      ",
+          "      if (!placeholders.forTeamFilter.find{y -> y.label.equals(el.label)}) {",
+          "        \tplaceholders.forTeamFilter.add([\"label\": el.label, \"value\": el.label ])",
+          "        }",
+          "    }",
+          "}",
+          "",
+          "if (placeholders.isDefault) {",
+          "\tplaceholders.forTeamFilter.add([\"label\": \"UNMATCH\", \"value\": \"UNMATCH\"] );",
+          "}",
+          "placeholders._options.teamFilter = placeholders.forTeamFilter;",
+          "placeholders.teamFilterCopy = placeholders.teamFilter"
+        ],
+        "type": "POSTGRESQL"
+      },
+      "type": "DROPDOWN",
+      "width": "150"
+    },
+    {
+      "defaultValueLines": [
+        "return true"
+      ],
+      "description": "Line Chart",
+      "dynamic": false,
+      "hideLabel": false,
+      "isUiFilter": false,
+      "label": "Show Active",
+      "mainFilter": false,
+      "minWidth": "100",
+      "multiple": false,
+      "placeholder": "showActive",
+      "position": "LEFT",
+      "type": "CHECKBOX"
+    }
+  ],
+  "groupIndex": 0,
+  "help": {
+    "descriptionLines": [
+      "<p>Use this widget to help you understand the latest changes to the source code and repository with components across teams and keep track of each team's activity.</p>"
+    ],
+    "insights": [
+      {
+        "insight": "<p>Gain insights into the productivity and quality of code for each team based on their number of commits with components.</p>\n",
+        "recommendations": [
+          "<p>When you spot a variation in code committed investigate the cause to help maintain productivity and project velocity.</p>\n"
+        ]
+      }
+    ],
+    "summaryLines": [
+      "<p>This widget shows the count of code commits with components by team.</p>",
+      "",
+      "<p>On hover, view a team's code commit count for that day.</p>",
+      "",
+      "<p>Click on a data point to drilldown and view commit details for that day.</p>",
+      "",
+      "<p>Please see&nbsp;<a href=\"https://www.dagility.com/documentation/3/illuminate/generic-widget-usage\" rel=\"nofollow\">Generic Widget Usage</a>&nbsp;for instructions on how to view/set filters, thresholds, comments, etc., on all widgets.</p>",
+      "",
+      "<p><u>Filters</u></p>",
+      "",
+      "<p><strong>Days:</strong>&nbsp;Default is set to 7 days. Specify the number of previous days to filter on starting from today.&nbsp;</p>",
+      "",
+      "<p><strong>Components</strong>: Specify which components should be included. Default is set to All.&nbsp;</p>",
+      "",
+      "<p><strong>Team</strong>: Choose All or select a team from the list. &nbsp;<strong>Note: </strong>The Default Team are members that don’t appear to be on any specific team.</p>"
+    ]
+  },
+  "id": "3730b991-9631-4925-806f-6dc6cebeaad1",
+  "inputPlaceholders": [
+    "project_id",
+    "timezone",
+    "local_start_day"
+  ],
+  "query": [
+    {
+      "placeholder": "teamMembers",
+      "queryLines": [
+        "def sql =  \"select t.name, u._id, u.email, rl_ut.team_id,  t.is_default \"+",
+        "\"from (\"+",
+        "  \" select rl_at.team_id\"+",
+        "  \" from edgeops.app_team_relation rl_at\"+",
+        "  \" WHERE app_id in (:project_id) \"+",
+        "\") pt\" + ",
+        "\" left join edgeops.dp_user_team_relation rl_ut on pt.team_id = rl_ut.team_id\" +",
+        "\" join edgeops.app_user u on rl_ut.user_id = u.pk\" +",
+        "\" join edgeops.dp_team t on pt.team_id = t.pk\"+",
+        "\" ORDER BY t.name \"",
+        ";",
+        "",
+        "return placeholders.project_id && placeholders.project_id.size() ? sql : '';"
+      ],
+      "scriptLines": [
+        "if(!placeholders.teamMembers) {",
+        " placeholders.teamMembers = []; ",
+        "}"
+      ],
+      "type": "POSTGRESQL"
+    },
+    {
+      "placeholder": "filterComponents",
+      "queryLines": [
+        "def sql = \"select du._id as value \" +",
+        "\"from edgeops.component_unit cu \" + ",
+        "\"join edgeops.dp_unit du on cu.unit_id = du.pk \" + ",
+        "\"join edgeops.app_tool at2 on cu.app_tool_id = at2.pk \" +",
+        "\"join edgeops.tool t on t.pk = at2.tool_id \" + ",
+        "\"where cu.component_id in (:components) and jsonb_exists(t.plugin_categories, 'SCM') \";",
+        "return placeholders.components && placeholders.components.size() ? sql : '';"
+      ],
+      "scriptLines": [
+        "placeholders.filterComponents = placeholders.components && placeholders.components.size() ? placeholders.filterComponents.collect{x -> x.value} : [];"
+      ],
+      "type": "POSTGRESQL"
+    },
+    {
+      "beforeScriptLines": [
+        "placeholders.result = [];",
+        "",
+        "try {",
+        "  placeholders.date = Long.valueOf(placeholders.date);",
+        "  placeholders.start_date = placeholders.local_start_day - 86400 * 1000 * (placeholders.date - 1);",
+        "  placeholders.end_date = placeholders.local_start_day;",
+        "} catch (Exception e) {",
+        "  placeholders.date = null;",
+        "}",
+        "",
+        "def emails=[];",
+        "for(def m:placeholders.teamMembers)",
+        "{",
+        "  emails+=[m.email];",
+        "}",
+        "placeholders.teamMemberEmails=emails;"
+      ],
+      "placeholder": "result",
+      "queryLines": [
+        "def sql = \"SELECT email, formattedDate as `date`, commitsCount as value \" + ",
+        "\"FROM (SELECT email, toDate(timestamp/1000,:timezone) as formattedDate, count(*) as commitsCount \"+",
+        "\"FROM reporting.scm_commits \"+",
+        "\"WHERE timestamp >= :start_date AND timestamp <= :end_date \"+",
+        "\"AND repoId IN (:filterComponents) \"+",
+        "\"AND email in (:teamFilter) \"+",
+        "\"AND NOT (message like 'Merge%' OR message like 'Pull%' OR message like 'PR%') \"+",
+        "\"GROUP by email, formattedDate \"+ ",
+        "\"ORDER BY formattedDate)\";",
+        "return placeholders.date && placeholders.filterComponents && placeholders.filterComponents.size() ? sql : '';"
+      ],
+      "scriptLines": [
+        "import java.time.*;",
+        "",
+        "if(!placeholders.result || placeholders.result.isEmpty()) {",
+        "  placeholders.result = [];",
+        "  return;",
+        "}",
+        "",
+        "def linesOfCodeGroupByDate = new java.util.HashMap<>();",
+        "def maxDays = placeholders.date > 100 ? 100 : placeholders.date;",
+        "",
+        "for(def i = 0; i < maxDays; i++) {",
+        "  java.time.LocalDate checkDate = java.time.Instant.ofEpochMilli(placeholders.start_date).atZone(java.time.ZoneId.of(placeholders.timezone)).toLocalDate();",
+        "  checkDate = checkDate.plusDays(i);",
+        "  def d = new Date(checkDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli());",
+        "  if(!placeholders.result.find{val -> val.date == d}) {",
+        "    placeholders.result.push(['email': placeholders.result[0].email, 'date': d, 'value': 0]);",
+        "  }",
+        "}",
+        "",
+        "placeholders.result = placeholders.result.sort{a, b -> a.date - b.date};",
+        "",
+        "  placeholders.result.each{res ->",
+        "    def emailValue = new java.util.HashMap<>();",
+        "    if(!linesOfCodeGroupByDate[res.date]) {",
+        "      emailValue[res.email] = res.value;",
+        "      linesOfCodeGroupByDate[res.date] = emailValue;",
+        "    } else {",
+        "      linesOfCodeGroupByDate[res.date][res.email] = linesOfCodeGroupByDate[res.date][res.email] == null ",
+        "      ? res.value ",
+        "      : linesOfCodeGroupByDate[res.date][res.email] + res.value;",
+        "    }",
+        "  }",
+        "",
+        "placeholders.abc = 0;",
+        "def members = new java.util.HashMap<>();",
+        "def defaultTeam = placeholders.teamMembers.find{element -> !!element.is_default};",
+        "",
+        "  placeholders.teamMembers.each{res ->",
+        "    if(placeholders.showActive && placeholders.result.find{val -> ",
+        "      placeholders.vType = val.email.getClass();",
+        "      placeholders.rType = val.email.getClass();",
+        "      val.email.equals(res.email)",
+        "    } == null) {",
+        "      return;",
+        "    }",
+        "",
+        "    if(placeholders.teams.find{i -> i == res?.team_id}) {",
+        "      members[res.email] = res.name;",
+        "      placeholders.t = members;",
+        "    }",
+        "  }",
+        "",
+        "",
+        "def res = [];",
+        "def formatter = new java.text.SimpleDateFormat(\"MMM-dd\", java.util.Locale.forLanguageTag(\"en-US\"));",
+        "",
+        "linesOfCodeGroupByDate.keySet().sort().each{date ->",
+        "  def formatedDate = new Date(date.getTime());",
+        "",
+        "  def codeCommitsByDay = linesOfCodeGroupByDate[date];",
+        "  def teamsCommit = new java.util.HashMap<>();",
+        "",
+        "  members.keySet().each{member ->",
+        "    def commitsByMember = codeCommitsByDay[member] == null ? 0 : codeCommitsByDay[member];",
+        "    teamsCommit[members[member]] = teamsCommit[members[member]] == null ? commitsByMember : teamsCommit[members[member]] + commitsByMember;      ",
+        "  }",
+        "",
+        "  codeCommitsByDay.keySet().each{commits ->",
+        "    if(members[commits] == null && placeholders.teams.find{i -> i == defaultTeam?.team_id}) {",
+        "      teamsCommit[defaultTeam?.name] = codeCommitsByDay[commits] + (teamsCommit[defaultTeam?.name] != null ? teamsCommit[defaultTeam.name] : 0);",
+        "    }",
+        "  }",
+        "",
+        "  def resultContainsDefaul = teamsCommit[defaultTeam?.name] == null && res.find{val -> val[defaultTeam?.name]}",
+        "",
+        "  if(resultContainsDefaul && placeholders.teams.find{i -> i == defaultTeam?.team_id}) {",
+        "    teamsCommit[defaultTeam?.name] = 0;",
+        "  }",
+        "",
+        "  def item = teamsCommit;",
+        "  item.label = formatter.format(formatedDate).toString();",
+        "  res.add(item);",
+        "}",
+        "",
+        "",
+        "",
+        "placeholders.linesOfCodeGroupByDate = linesOfCodeGroupByDate;",
+        "placeholders.result = res;",
+        "placeholders.teamCounts=res;"
+      ],
+      "type": "CLICKHOUSE"
+    }
+  ],
+  "series": [
+    {
+      "color": "#FFFFFF",
+      "column": "*",
+      "label": "label",
+      "seriesArea": false
+    }
+  ],
+  "server": true,
+  "size": {
+    "defaultH": 0.16666666666666666,
+    "defaultW": 0.16666666666666666,
+    "minH": 0.16666666666666666,
+    "minW": 0.16666666666666666
+  },
+  "system": true,
+  "type": "linechart"
+}
